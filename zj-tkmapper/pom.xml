@@ -4,27 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zj.framework.mybatis</groupId>
-    <artifactId>zj-mybatis</artifactId>
+    <groupId>com.zj.framework.tkmapper</groupId>
+    <artifactId>zj-tkmapper</artifactId>
     <version>1.0.0</version>
-    <name>zj-mybatis</name>
+    <name>zj-tkmapper</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.2.8</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.baseto</groupId>
-            <artifactId>zj-baseto</artifactId>
-            <version>1.0.0</version>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>3.3.9</version>
         </dependency>
     </dependencies>
 
     <build>
-        <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

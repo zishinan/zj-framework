@@ -12,6 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 使用该转换器，接口封装层依赖
+ * <dependency>
+ *     <groupId>com.zj.framework.baseto</groupId>
+ *     <artifactId>zj-baseto</artifactId>
+ *     <version>1.0.0</version>
+ * </dependency>
+ * enum定义时实现 {@link IdEnum}
  * @author Mr. xi.yang<br/>
  * @version V1.0 <br/>
  * @description: 带id属性的通用转换器,将id映射到数据库中 <br/>
