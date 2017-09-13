@@ -1,12 +1,13 @@
 package com.zj.util.string;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.DecimalFormat;
 
 public class NumberUtil
 {
-	private static final Logger logger = Logger.getLogger(NumberUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(NumberUtil.class);
 	private NumberUtil() {
 		throw new Error("不要实例化!");
 	}

@@ -1,7 +1,8 @@
 package com.zj.util.date;
 
 import com.zj.util.string.StringUtil;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class DateUtil
 {
-	public static final Logger LOGGER = Logger.getLogger(DateUtil.class);
+	public static final Logger LOGGER = LoggerFactory.getLogger(DateUtil.class);
 	/**
 	 * HH:mm
 	 */

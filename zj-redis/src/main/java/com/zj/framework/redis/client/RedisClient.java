@@ -1,6 +1,7 @@
 package com.zj.framework.redis.client;
 
 import com.alibaba.fastjson.JSON;
+import com.zj.framework.fastjson.JsonUtil;
 import com.zj.framework.redis.support.AbstractRedisClient;
 import com.zj.framework.redis.support.RedisCallback;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class RedisClient extends AbstractRedisClient {
         return doInRedis(new RedisCallback<String>() {
             @Override
             public String excute(ShardedJedis connection) {
-                return connection.set(key, JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss"));
+                return connection.set(key, JsonUtil.toJsonString(obj));
             }
         });
     }
@@ -30,7 +31,7 @@ public class RedisClient extends AbstractRedisClient {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.hset(key,field, JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss"));
+                return connection.hset(key,field,JsonUtil.toJsonString(obj));
             }
         });
     }
@@ -44,7 +45,7 @@ public class RedisClient extends AbstractRedisClient {
                     result = connection.setnx(key, obj.toString());
                     return result != null && result.equals(1L) ? true : false;
                 }
-                result = connection.setnx(key, JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss"));
+                result = connection.setnx(key, JsonUtil.toJsonString(obj));
                 return result != null && result.equals(1L) ? true : false;
             }
         });
@@ -58,7 +59,7 @@ public class RedisClient extends AbstractRedisClient {
                 if (obj instanceof String) {
                     return connection.getSet(key, obj.toString());
                 }
-                return connection.getSet(key, JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss"));
+                return connection.getSet(key, JsonUtil.toJsonString(obj));
             }
         });
     }
@@ -67,7 +68,7 @@ public class RedisClient extends AbstractRedisClient {
         return doInRedis(new RedisCallback<String>() {
             @Override
             public String excute(ShardedJedis connection) {
-                return connection.setex(key, expireTime, JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss"));
+                return connection.setex(key, expireTime, JsonUtil.toJsonString(obj));
             }
         });
     }
@@ -117,20 +118,20 @@ public class RedisClient extends AbstractRedisClient {
         });
     }
 
-    public Long sadd(final String key, final Object value) {
+    public Long sadd(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.sadd(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.sadd(key, JsonUtil.toJsonString(obj));
             }
         });
     }
 
-    public Long srem(final String key, final Object value) {
+    public Long srem(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.srem(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.srem(key, JsonUtil.toJsonString(obj));
             }
         });
     }
@@ -162,47 +163,47 @@ public class RedisClient extends AbstractRedisClient {
         });
     }
 
-    public Boolean sismember(final String key, final Object value) {
+    public Boolean sismember(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Boolean>() {
             @Override
             public Boolean excute(ShardedJedis connection) {
-                return connection.sismember(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.sismember(key, JsonUtil.toJsonString(obj));
             }
         });
     }
 
-    public Long zadd(final String key, final double score, final Object value) {
+    public Long zadd(final String key, final double score, final Object obj) {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.zadd(key, score, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.zadd(key, score, JsonUtil.toJsonString(obj));
             }
         });
     }
 
-    public Long zrem(final String key, final Object value) {
+    public Long zrem(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.zrem(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.zrem(key, JsonUtil.toJsonString(obj));
             }
         });
     }
 
-    public Double zincrby(final String key, final double score, final Object value) {
+    public Double zincrby(final String key, final double score, final Object obj) {
         return doInRedis(new RedisCallback<Double>() {
             @Override
             public Double excute(ShardedJedis connection) {
-                return connection.zincrby(key, score, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.zincrby(key, score, JsonUtil.toJsonString(obj));
             }
         });
     }
 
-    public Double zscore(final String key, final Object value) {
+    public Double zscore(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Double>() {
             @Override
             public Double excute(ShardedJedis connection) {
-                return connection.zscore(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.zscore(key, JsonUtil.toJsonString(obj));
             }
         });
     }
@@ -252,20 +253,20 @@ public class RedisClient extends AbstractRedisClient {
         });
     }
 
-    public Long lpush(final String key, final Object value) {
+    public Long lpush(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.lpush(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.lpush(key, JsonUtil.toJsonString(obj));
             }
         });
     }
 
-    public Long rpush(final String key, final Object value) {
+    public Long rpush(final String key, final Object obj) {
         return doInRedis(new RedisCallback<Long>() {
             @Override
             public Long excute(ShardedJedis connection) {
-                return connection.rpush(key, JSON.toJSONStringWithDateFormat(value, "yyyy-MM-dd HH:mm:ss"));
+                return connection.rpush(key, JsonUtil.toJsonString(obj));
             }
         });
     }

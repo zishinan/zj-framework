@@ -1,12 +1,12 @@
 package com.zj.util.file;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 
 public class LogUtil {
-	private static final Logger logger = LogManager.getLogger(LogUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(LogUtil.class);
 	private LogUtil() {
 		throw new Error("不要实例化!");
 	}

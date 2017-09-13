@@ -4,22 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zj.framework.redis</groupId>
-    <artifactId>zj-redis</artifactId>
+    <groupId>com.zj.framework.fastjson</groupId>
+    <artifactId>zj-fastjson</artifactId>
     <version>1.0.0</version>
-    <name>zj-redis</name>
+    <name>zj-fastjson</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.fastjson</groupId>
-            <artifactId>zj-fastjson</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.9</version>
         </dependency>
         <dependency>
             <groupId>com.zj.framework.logback</groupId>
@@ -27,9 +22,14 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>3.2.10.RELEASE</version>
+            <groupId>com.zj.framework.baseto</groupId>
+            <artifactId>zj-baseto</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zj.framework.springtest</groupId>
+            <artifactId>zj-springtest</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

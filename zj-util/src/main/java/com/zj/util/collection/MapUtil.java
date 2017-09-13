@@ -1,12 +1,13 @@
 package com.zj.util.collection;
 
 import com.zj.util.file.LogUtil;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 public class MapUtil {
-	private static final Logger logger = Logger.getLogger(MapUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(MapUtil.class);
 	private MapUtil() {
 		throw new Error("不要实例化!");
 	}

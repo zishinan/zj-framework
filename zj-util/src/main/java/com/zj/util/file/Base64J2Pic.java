@@ -1,12 +1,13 @@
 package com.zj.util.file;
 
 import com.owtelse.codec.Base64;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class Base64J2Pic {
-	private static final Logger logger = Logger.getLogger(Base64J2Pic.class);
+	private static final Logger logger = LoggerFactory.getLogger(Base64J2Pic.class);
 	public static void main(String[] args) {
 		String path = "C:\\Users\\develop1\\Desktop\\222.gif";
 		String imgStr = getImgString(path);

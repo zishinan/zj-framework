@@ -1,6 +1,7 @@
 package com.zj.util.file;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -9,7 +10,7 @@ import java.io.File;
  * @author <a href="1006652872@qq.com">yangxi</a>
  */
 public class EntityToDao {
-	private static final Logger logger = Logger.getLogger(EntityToDao.class);
+	private static final Logger logger = LoggerFactory.getLogger(EntityToDao.class);
 	private static final String COMMON_DAO_PACKAGE_NAME = "com.web.common.dao";
 	private static final String DAO_PACKAGE_NAME = "com.web.dao";
 	private static final String MODEL_PACKAGE_NAME = "com.web.model";

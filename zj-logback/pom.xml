@@ -4,32 +4,44 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zj.framework.redis</groupId>
-    <artifactId>zj-redis</artifactId>
+    <groupId>com.zj.framework.logback</groupId>
+    <artifactId>zj-logback</artifactId>
     <version>1.0.0</version>
-    <name>zj-redis</name>
+    <name>zj-logback</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.5.1</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.11</version>
         </dependency>
         <dependency>
-            <groupId>com.zj.framework.fastjson</groupId>
-            <artifactId>zj-fastjson</artifactId>
-            <version>1.0.0</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.3</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.zj.framework.logback</groupId>
-            <artifactId>zj-logback</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>0.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>3.2.10.RELEASE</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.12</version>
         </dependency>
     </dependencies>
 

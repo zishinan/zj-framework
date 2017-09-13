@@ -4,32 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zj.framework.redis</groupId>
-    <artifactId>zj-redis</artifactId>
+    <groupId>com.zj.framework.springtest</groupId>
+    <artifactId>zj-springtest</artifactId>
     <version>1.0.0</version>
-    <name>zj-redis</name>
+    <name>zj-springtest</name>
     <packaging>jar</packaging>
+
+    <properties>
+        <spring.version>3.2.10.RELEASE</spring.version>
+        <junit.version>4.9</junit.version>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.fastjson</groupId>
-            <artifactId>zj-fastjson</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.logback</groupId>
-            <artifactId>zj-logback</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>3.2.10.RELEASE</version>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 

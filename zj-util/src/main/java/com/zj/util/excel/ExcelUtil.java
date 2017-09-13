@@ -3,12 +3,13 @@ package com.zj.util.excel;
 import com.zj.util.excel.usermodel.ExcelData;
 import com.zj.util.file.FileUtil;
 import com.zj.util.string.StringUtil;
-import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ExcelUtil {
-	private static final Logger LOGGER = Logger.getLogger(ExcelUtil.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExcelUtil.class);
 	public static final String SEPARATOR = ",";
 	public static final String CONNECTOR = "-";
 	public static void main(String[] args) {

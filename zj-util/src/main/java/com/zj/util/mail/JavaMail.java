@@ -5,7 +5,8 @@ import com.zj.util.excel.usermodel.ExcelData;
 import com.zj.util.file.FileUtil;
 import com.zj.util.file.PropertiesUtil;
 import com.zj.util.mail.usermodel.Email;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class JavaMail {
-	private static final Logger LOGGER = Logger.getLogger(JavaMail.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(JavaMail.class);
 	private static Transport transport;
     /**
      * 发送邮件

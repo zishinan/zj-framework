@@ -14,8 +14,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class HttpClientUtil {
 	
 	private static final int REQUEST_TIMEOUT = 10 * 1000;
 
-	private static final Logger logger = LogManager.getLogger(HttpClientUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
 	// httpGet连接
 	public static String get(String url, List<NameValuePair> nvps) throws Exception {

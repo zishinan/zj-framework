@@ -1,6 +1,7 @@
 package com.zj.util.file;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.tools.JavaCompiler;
 import javax.tools.JavaCompiler.CompilationTask;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class CompileAndLoadUtil {
 	
-	private static Logger logger = Logger.getLogger(CompileAndLoadUtil.class);
+	private static Logger logger = LoggerFactory.getLogger(CompileAndLoadUtil.class);
 	
 	private static String classpath;
 	

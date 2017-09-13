@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <property name="LOG_DIR" value="/home/zjframework/logs"/>
+
+    <!-- 控制台日志 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%5level] %logger{36} [%file:%line] - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 运行日志 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/context.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%5level] %logger{36} [%file:%line] - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!--<logger name="com.impl.dao" level="DEBUG"/>-->
+    <!--<logger name="java.sql" level="ERROR"/>-->
+    <!--<logger name="org.springframework" level="ERROR"/>-->
+
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <!--<appender-ref ref="FILE" />-->
+    </root>
+
+</configuration>

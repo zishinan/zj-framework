@@ -1,5 +1,6 @@
 package com.zj.util.date;
 
+import com.zj.framework.baseto.type.DatePattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +59,7 @@ public class DateUtils {
         return cal.getTime();
     }
 
-    public static String formatDate(Date date,Pattern pattern){
+    public static String formatDate(Date date,DatePattern pattern){
         try {
             return new SimpleDateFormat(pattern.getName()).format(date);
         }catch (Exception e){
@@ -66,24 +67,5 @@ public class DateUtils {
             return null;
         }
 
-    }
-
-    public enum Pattern{
-        yyyyMMdd_HHmmss("yyyy-MM-dd HH:mm:ss"),
-        yyyyMMdd_HHmm("yyyy-MM-dd HH:mm"),
-        yyyyMMddHHmmss("yyyyMMddHHmmss"),
-        MMdd_HHmm("MM-dd HH:mm"),
-        yyyyMMdd("yyyy-MM-dd"),
-        yyyyMMdd_mini("yyyyMMdd"),
-        yyyyMMdd_ch("yyyy年MM月dd日"),
-        HHmmss("HH:mm:ss")
-        ;
-        private String name;
-        Pattern(String name){
-            this.name = name;
-        }
-        public String getName() {
-            return name;
-        }
     }
 }

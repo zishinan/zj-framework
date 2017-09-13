@@ -4,13 +4,14 @@ import com.zj.util.file.PropertiesUtil;
 import com.zj.util.net.HttpClientUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApiDyxxUtil {
-	private static final Logger logger = Logger.getLogger(ApiDyxxUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(ApiDyxxUtil.class);
 	public static void main(String[] args) {
 		PropertiesUtil.load("mail.properties");
 //		String nums = "15882068471,13258280995,13668243256,13880322886,18180596106,18628183677,13348989981,13730894774,15982230805";
