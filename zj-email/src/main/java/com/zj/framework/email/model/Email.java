@@ -1,4 +1,4 @@
-package com.zj.util.mail.usermodel;
+package com.zj.framework.email.model;
 
 public class Email {
 	private String headName;

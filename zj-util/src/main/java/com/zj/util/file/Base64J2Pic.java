@@ -1,9 +1,8 @@
 package com.zj.util.file;
 
-import com.owtelse.codec.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.apache.commons.codec.binary.Base64;
 import java.io.*;
 
 public class Base64J2Pic {
@@ -48,12 +47,12 @@ public class Base64J2Pic {
 
 	public static String getImgString(String path) {
 		InputStream is = null;
-		byte[] data = null;
+		byte[] data;
 		try {
 			is = new FileInputStream(path);
 			data = new byte[is.available()];
 			is.read(data);
-			return Base64.encode(data);
+			return Base64.encodeBase64String(data);
 		} catch (Exception e) {
 			logger.error("Get file error");
 		}finally{

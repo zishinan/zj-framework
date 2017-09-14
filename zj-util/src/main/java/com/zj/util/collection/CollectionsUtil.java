@@ -1,6 +1,5 @@
 package com.zj.util.collection;
 
-import com.alibaba.fastjson.JSON;
 import com.zj.util.collection.sort.SortKey;
 
 import java.lang.reflect.Method;
@@ -10,17 +9,6 @@ import java.util.*;
  * 集合工具类
  */
 public class CollectionsUtil {
-	/**
-	 * 打印集合元素到控制台
-	 * @param collection
-	 */
-	public static void printSimpleCollection2Console(Collection<?> collection) {
-		Iterator<?> iterator = collection.iterator();
-		while (iterator.hasNext()) {
-			System.out.println(JSON.toJSONString(iterator.next()));
-		}
-	}
-
 	/**
 	 * 根据map中多个key排序List<Map>
 	 * @param result

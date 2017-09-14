@@ -13,8 +13,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.zj.framework.fastjson</groupId>
-			<artifactId>zj-fastjson</artifactId>
+			<groupId>com.zj.framework.baseto</groupId>
+			<artifactId>zj-baseto</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>
@@ -23,63 +23,16 @@
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.zj.framework.baseto</groupId>
-			<artifactId>zj-baseto</artifactId>
+			<groupId>com.zj.framework.springtest</groupId>
+			<artifactId>zj-springtest</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
-
 		<dependency>
-			<groupId>com.belerweb</groupId>
-			<artifactId>pinyin4j</artifactId>
-			<version>2.5.0</version>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
 		</dependency>
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongodb-driver</artifactId>
-			<version>3.4.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1-b02</version>
-			<type>jar</type>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.owtelse.codec</groupId>
-			<artifactId>base64</artifactId>
-			<version>1.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.3.4</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-		<dependency>
-			<groupId>com.zj.framework.excel</groupId>
-			<artifactId>zj-excel</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-
-
 	</dependencies>
 	<build>
 		<resources>

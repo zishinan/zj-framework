@@ -1,25 +1,8 @@
 package com.zj.util.object;
 
-import com.alibaba.fastjson.JSON;
-
 import java.lang.reflect.Field;
 
 public class ObjectUtil {
-    public static void main(String[] args) {
-        User user = new User();
-        user.setAge(18);
-        user.setName("ddddd");
-//        user.setDescription("dafdasdf");
-        user.setSex(true);
-        UserInfo userInfo = new UserInfo();
-        copyProperty(user,userInfo);
-        System.out.println("Json="+ JSON.toJSONString(userInfo));
-        UserDesc userDesc = new UserDesc();
-        userDesc.setDesc("ddddddddddd");
-        copyProperty(userDesc,userInfo);
-        System.out.println("Json="+ JSON.toJSONString(userInfo));
-
-    }
     public static void copyProperty(Object from,Object to){
         Class fromClass = from.getClass();
         Class toClass = to.getClass();

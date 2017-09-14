@@ -1,4 +1,4 @@
-package com.zj.util.net;
+package com.zj.framework.httpclient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -28,7 +28,7 @@ import java.util.Map;
  * @author yangxi
  * 
  */
-public class HttpClientUtil {
+public class HttpUtil {
 
 	private static final int STATE_OK = 200;
 	
@@ -36,7 +36,7 @@ public class HttpClientUtil {
 	
 	private static final int REQUEST_TIMEOUT = 10 * 1000;
 
-	private static final Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 
 	// httpGet连接
 	public static String get(String url, List<NameValuePair> nvps) throws Exception {

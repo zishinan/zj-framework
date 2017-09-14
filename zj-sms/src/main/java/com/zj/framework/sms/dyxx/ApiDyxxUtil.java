@@ -1,7 +1,7 @@
-package com.zj.util.mail;
+package com.zj.framework.sms.dyxx;
 
+import com.zj.framework.httpclient.HttpUtil;
 import com.zj.util.file.PropertiesUtil;
-import com.zj.util.net.HttpClientUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
@@ -59,7 +59,7 @@ public class ApiDyxxUtil {
 		
 		String result = "error";
 		try {
-			result =  HttpClientUtil.post(reqUrl, nvps);
+			result =  HttpUtil.post(reqUrl, nvps);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

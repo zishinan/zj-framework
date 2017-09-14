@@ -1,6 +1,5 @@
 package com.zj.util.file;
 
-import com.alibaba.fastjson.JSON;
 import com.zj.util.file.model.Files;
 
 import java.io.File;
@@ -26,14 +25,6 @@ public class FileUtil {
      */
     private static final char SYSTEM_SEPARATOR = File.separatorChar;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Files files = getFiles("D:/software/myWiki/");
-		System.out.println(JSON.toJSONString(files));
-	}
-	
 	public static Files getFiles(String path){
 		Files files = new Files();
         File file = getFile(path);

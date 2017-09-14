@@ -1,10 +1,10 @@
-package com.zj.util.mail;
+package com.zj.framework.email;
 
 import com.zj.framework.excel.ExcelUtil;
 import com.zj.framework.excel.usermodel.ExcelData;
+import com.zj.framework.email.model.Email;
 import com.zj.util.file.FileUtil;
 import com.zj.util.file.PropertiesUtil;
-import com.zj.util.mail.usermodel.Email;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-public class JavaMail {
-	private static final Logger LOGGER = LoggerFactory.getLogger(JavaMail.class);
+public class EmailUtil {
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtil.class);
 	private static Transport transport;
     /**
      * 发送邮件
@@ -89,7 +89,7 @@ public class JavaMail {
      * <a href="xi.yang@i-jia.net">yangxi</a>
      * @return
      */
-    public static boolean sendEmailWithFile(Email email,File file){
+    public static boolean sendEmailWithFile(Email email, File file){
     	if(file == null){
     		LOGGER.error("file is null");
     		return false;
@@ -157,10 +157,10 @@ public class JavaMail {
      * @return
      * @throws IOException
      */
-    public static boolean sendEmailWithExcel(Email email,ExcelData excelData) throws IOException{
+    public static boolean sendEmailWithExcel(Email email, ExcelData excelData) throws IOException{
     	ExcelUtil.poiExportExcel(excelData);
 		File file = new File(excelData.getFileName());
-		JavaMail.sendEmailWithFile(email,file);
+		EmailUtil.sendEmailWithFile(email,file);
 //		删除文件
 		FileUtil.deleteQuietly(file);
 		return true;
