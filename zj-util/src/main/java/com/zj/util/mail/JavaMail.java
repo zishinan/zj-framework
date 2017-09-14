@@ -1,7 +1,7 @@
 package com.zj.util.mail;
 
-import com.zj.util.excel.ExcelUtil;
-import com.zj.util.excel.usermodel.ExcelData;
+import com.zj.framework.excel.ExcelUtil;
+import com.zj.framework.excel.usermodel.ExcelData;
 import com.zj.util.file.FileUtil;
 import com.zj.util.file.PropertiesUtil;
 import com.zj.util.mail.usermodel.Email;
@@ -87,10 +87,6 @@ public class JavaMail {
     /**
      * 发送带附件的
      * <a href="xi.yang@i-jia.net">yangxi</a>
-     * @param headName
-     * @param sendHtml
-     * @param file
-     * @param receiveUser
      * @return
      */
     public static boolean sendEmailWithFile(Email email,File file){
@@ -168,12 +164,6 @@ public class JavaMail {
 //		删除文件
 		FileUtil.deleteQuietly(file);
 		return true;
-    }
-
-    public static void main(String[] args) {
-    	PropertiesUtil.load("mail.properties");
-        File file = new File("C:\\Users\\ouyang\\Desktop\\品牌数据.xls");
-        System.out.println(file.getName());
     }
 }
  

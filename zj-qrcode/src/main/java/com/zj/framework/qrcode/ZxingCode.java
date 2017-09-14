@@ -1,10 +1,10 @@
-package com.zj.util.qrcode;
+package com.zj.framework.qrcode;
 
 import com.google.zxing.*;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
-import com.zj.util.qrcode.common.BufferedImageLuminanceSource;
-import com.zj.util.qrcode.common.MatrixToImageWriter;
+import com.zj.framework.qrcode.zxing.BufferedImageLuminanceSource;
+import com.zj.framework.qrcode.zxing.MatrixToImageWriter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,22 +19,7 @@ import java.util.Map;
  */
 public class ZxingCode {
 	public static final String SEPARATOR = String.valueOf((char) 29);
-	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
-		String contents = QrCodeUtil.getCustomerCode(1);
-		System.out.println(contents);
-		String path = "C:"+File.separator+"Users"+File.separator+"ouyang"+File.separator+"Desktop"+File.separator+"testCode";
-		String fileName = "customer";
-		saveQRCode(contents, path, fileName);
-		
-		
-		
-//		String code = readQRCode(path, fileName);
-//		
-//		System.out.println(code);
-	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static String readQRCode(String path, String fileName) {
 		try {
 			MultiFormatReader reader = new MultiFormatReader();

@@ -1,8 +1,6 @@
-package com.zj.util.excel;
+package com.zj.framework.excel;
 
-import com.zj.util.excel.usermodel.ExcelData;
-import com.zj.util.file.FileUtil;
-import com.zj.util.string.StringUtil;
+import com.zj.framework.excel.usermodel.ExcelData;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -49,7 +47,6 @@ public class ExcelUtil {
 				sb.append(aid).append("\n");
 			}
 			System.out.println(sb.toString());
-			FileUtil.save("E:\\myworkspace\\zj-util\\mids.txt", sb.toString().getBytes());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -88,14 +85,14 @@ public class ExcelUtil {
 			boolean allNull = true;
 			for (int j = 0; j < keys.size(); j++) {
 				String key = keys.get(j);
-				if(StringUtil.isBlank(key)){
+				if(null == key){
 					LOGGER.error("title 为空了");
 					return null;
 				}
 				String value = dataList.get(i).get(j);
-				if(StringUtil.isNotBlank(value) && StringUtil.isNotBlank(value.trim())){
-					allNull = false;
-				}
+//				if(StringUtil.isNotBlank(value) && StringUtil.isNotBlank(value.trim())){
+//					allNull = false;
+//				}
 				map.put(key.trim(), value.trim());
 			}
 			if(!allNull){

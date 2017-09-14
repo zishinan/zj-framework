@@ -54,7 +54,7 @@ public class Api189Util {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		int ranInt = new Random().nextInt();
 		paramMap.put("user", "阳熙"+ranInt);
-		paramMap.put("shop", "易家互动建材商城"+ranInt);
+		paramMap.put("shop", "材商城"+ranInt);
 		paramMap.put("order", "164763268"+ranInt);
 		paramMap.put("url", "http://www.baidu.com");
 		nvps.add(new BasicNameValuePair("template_param", JSON.toJSONString(paramMap)));

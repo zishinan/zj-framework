@@ -1,4 +1,4 @@
-package com.zj.util.qrcode.common;
+package com.zj.framework.qrcode.zxing;
 
 import com.google.zxing.LuminanceSource;
 
