@@ -1,4 +1,4 @@
-package com.zj.framework.redis.client;
+package com.zj.framework.redis;
 
 import com.alibaba.fastjson.JSON;
 import com.zj.framework.fastjson.JsonUtil;
