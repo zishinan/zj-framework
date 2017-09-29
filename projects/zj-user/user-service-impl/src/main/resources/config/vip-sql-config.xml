@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.zj.framework.service.user.to"/>
+        <package name="com.zj.framework.service.user.type"/>
+        <package name="com.zj.framework.service.user.to.criteria"/>
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.zj.framework.mybatis.handler.IdEnumHandler"
+                     javaType="com.zj.framework.baseto.type.Gender"/>
+    </typeHandlers>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+            <property name="offsetAsPageNum" value="true"/>
+            <property name="rowBoundsWithCount" value="true"/>
+        </plugin>
+    </plugins>
+
+    <mappers>
+        <!--
+        需要将mapper接口类名和mapper.xml映射文件名称保持一致且在同一个目录中。
+        注意：要使用的是mapper代理；两个文件要在同一个目录。
+        -->
+        <package name="com.zj.framework.service.user.impl.dao"/>
+    </mappers>
+</configuration>

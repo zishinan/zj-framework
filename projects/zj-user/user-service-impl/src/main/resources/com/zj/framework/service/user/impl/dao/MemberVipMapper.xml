@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.framework.service.user.impl.dao.MemberVipMapper">
+    <resultMap id="BaseResultMap" type="MemberVipTo">
+        <id column="MID" property="mid" />
+        <result column="VIP_LEVEL"  property="vipLevel" />
+        <result column="VIP_STATUS"  property="vipStatus" />
+        <result column="CREATE_TIME"  property="createTime" />
+        <result column="LAST_POINT_UPDATE_TIME"  property="lastPointUpdateTime" />
+        <result column="VIP_LEVEL_UPDATE_TIME"  property="vipLevelUpdateTime" />
+        <result column="BIRTHDAY"  property="birthday" />
+        <result column="REMARK"  property="remark" />
+        <result column="GAME_TYPE"  property="gameType" />
+        <result column="WECHAT"  property="wechat" />
+        <result column="VIP_POINT"  property="vipPoint" />
+        <result column="VIP_TYPE" property="vipType" />
+        <result column="PHONE"  property="phone" />
+        <result column="REAL_NAME"  property="realName" />
+        <result column="NICK_NAME"  property="nickname" />
+        <result column="USER_NAME"  property="username" />
+        <result column="GENDER" property="genderType" />
+        <result column="ADDRESS"  property="address" />
+        <result column="QQ"  property="qq" />
+        <result column="TOTAL_CHARGE"  property="totalCharge" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        MID, VIP_LEVEL, VIP_STATUS, CREATE_TIME,VIP_LEVEL_UPDATE_TIME, LAST_POINT_UPDATE_TIME, BIRTHDAY, REMARK,
+        GAME_TYPE, WECHAT, VIP_POINT, VIP_TYPE, PHONE,REAL_NAME,USER_NAME,NICK_NAME,GENDER,ADDRESS,QQ,TOTAL_CHARGE
+    </sql>
+
+    <select id="selectVipByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MEMBER_VIP
+        where MID = #{mid,jdbcType=INTEGER}
+        <if test="vipStatusType != null">
+            AND VIP_STATUS = #{vipStatusType}
+        </if>
+    </select>
+    <delete id="deleteVipByPrimaryKey" parameterType="java.lang.Integer">
+        delete from MEMBER_VIP
+        where MID = #{mid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insertVipSelective" parameterType="MemberVipTo">
+        insert into MEMBER_VIP
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="mid != null">
+                MID,
+            </if>
+            <if test="vipLevel != null">
+                VIP_LEVEL,
+            </if>
+            <if test="vipStatus != null">
+                VIP_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="vipLevelUpdateTime != null">
+                VIP_LEVEL_UPDATE_TIME,
+            </if>
+            <if test="lastPointUpdateTime != null">
+                LAST_POINT_UPDATE_TIME,
+            </if>
+            <if test="birthday != null">
+                BIRTHDAY,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="gameType != null">
+                GAME_TYPE,
+            </if>
+            <if test="wechat != null">
+                WECHAT,
+            </if>
+            <if test="vipPoint != null">
+                VIP_POINT,
+            </if>
+            <if test="vipType != null">
+                VIP_TYPE,
+            </if>
+            <if test="phone != null">
+                PHONE,
+            </if>
+            <if test="realName != null">
+                REAL_NAME,
+            </if>
+            <if test="nickname != null">
+                NICK_NAME,
+            </if>
+            <if test="username != null">
+                USER_NAME,
+            </if>
+            <if test="genderType != null">
+                GENDER,
+            </if>
+            <if test="address != null">
+                ADDRESS,
+            </if>
+            <if test="qq != null">
+                QQ,
+            </if>
+            <if test="totalCharge != null">
+                TOTAL_CHARGE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="mid != null">
+                #{mid,jdbcType=INTEGER},
+            </if>
+            <if test="vipLevel != null">
+                #{vipLevel,jdbcType=INTEGER},
+            </if>
+            <if test="vipStatus != null">
+                #{vipStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="vipLevelUpdateTime != null">
+                #{vipLevelUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastPointUpdateTime != null">
+                #{lastPointUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="gameType != null">
+                #{gameType,jdbcType=VARCHAR},
+            </if>
+            <if test="wechat != null">
+                #{wechat,jdbcType=VARCHAR},
+            </if>
+            <if test="vipPoint != null">
+                #{vipPoint,jdbcType=INTEGER},
+            </if>
+            <if test="vipType != null">
+                #{vipType,jdbcType=BIT},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="genderType != null">
+                #{genderType,jdbcType=BIT},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="qq!= null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="totalCharge != null">
+                #{totalCharge,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateVipByPrimaryKeySelective" parameterType="MemberVipTo">
+        update MEMBER_VIP
+        <set>
+            <if test="birthday != null">
+                BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="gameType != null">
+                GAME_TYPE = #{gameType,jdbcType=VARCHAR},
+            </if>
+            <if test="wechat != null">
+                WECHAT = #{wechat,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                PHONE = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                REAL_NAME = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                NICK_NAME = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                USER_NAME = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="genderType != null">
+                GENDER = #{genderType,jdbcType=BIT},
+            </if>
+            <if test="address != null">
+                ADDRESS = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                QQ = #{qq,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where MID = #{mid,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateVipPointByPrimaryKeySelective" parameterType="MemberVipTo">
+        update MEMBER_VIP
+        <set>
+            <if test="vipType != null">
+                VIP_TYPE = #{vipType,jdbcType=BIT},
+            </if>
+            <if test="vipStatus != null">
+                VIP_STATUS = #{vipStatus,jdbcType=INTEGER},
+            </if>
+            <if test="vipLevel != null">
+                VIP_LEVEL = #{vipLevel,jdbcType=INTEGER},
+            </if>
+            <if test="vipPoint != null">
+                VIP_POINT =  #{vipPoint,jdbcType=INTEGER},
+            </if>
+            <if test="totalCharge != null">
+                TOTAL_CHARGE = #{totalCharge,jdbcType=DECIMAL},
+            </if>
+            <if test="lastPointUpdateTime != null">
+                LAST_POINT_UPDATE_TIME = #{lastPointUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="vipLevelUpdateTime != null">
+                VIP_LEVEL_UPDATE_TIME = #{vipLevelUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where MID = #{mid,jdbcType=INTEGER}
+    </update>
+
+    <select id="countVipList" parameterType="MemberVipCriteria" resultType="java.lang.Integer">
+        select
+        count(*)
+        from MEMBER_VIP
+        <where>
+            <if test="nickname !=null and nickname !=''">
+                and NICK_NAME LIKE CONCAT(CONCAT('%', #{nickName}), '%')
+            </if>
+            <if test="phone !=null and phone !=''">
+                and PHONE = #{phone}
+            </if>
+        </where>
+        order by CREATE_TIME desc
+    </select>
+
+    <select id="selectVipList" parameterType="MemberVipCriteria" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MEMBER_VIP
+        <where>
+            AND  VIP_STATUS != 2
+            <if test="mid !=null">
+                and MID = #{mid}
+            </if>
+            <if test="nickName !=null and nickName !=''">
+                and NICK_NAME = #{nickName}
+            </if>
+            <if test="msn !=null and msn !=''">
+                and USER_NAME = #{msn}
+            </if>
+            <if test="phone !=null and phone !=''">
+                and PHONE = #{phone}
+            </if>
+            <if test="qq !=null and qq !=''">
+                and QQ = #{qq}
+            </if>
+            <if test="wechat !=null and wechat !=''">
+                and WECHAT = #{wechat}
+            </if>
+            <if test="vipLevel !=null">
+                and VIP_LEVEL = #{vipLevel}
+            </if>
+            <if test="vipType !=null">
+                and VIP_TYPE = #{vipType}
+            </if>
+            <if test="vipStatusType !=null">
+                and VIP_STATUS = #{vipStatusType}
+            </if>
+            <if test="birthdayFrom !=null and birthdayTo != null">
+                and BIRTHDAY BETWEEN #{birthdayFrom} AND #{birthdayTo}
+            </if>
+            <if test="remark !=null and remark !=''">
+                and REMARK LIKE CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="vipBirthdayKey !=null">
+                AND
+                (DATEDIFF(CAST(CONCAT(YEAR(#{vipBirthdayKey}),DATE_FORMAT(BIRTHDAY,'-%m-%d'))AS DATE),CAST(DATE_FORMAT(#{vipBirthdayKey},'%y-%m-%d') AS DATE)) BETWEEN 0 AND 7
+                OR/* or后面的是捎带解决跨年问题*/
+                DATEDIFF(CAST(CONCAT(YEAR(#{vipBirthdayKey})+1,DATE_FORMAT(BIRTHDAY,'-%m-%d'))AS DATE),CAST(DATE_FORMAT(#{vipBirthdayKey},'%y-%m-%d') AS DATE)) BETWEEN 0 AND 7)
+            </if>
+        </where>
+    </select>
+
+    <select id="selectVipListByMids" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MEMBER_VIP
+        where MID in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="findByLastPointUpdateTimeLessThan" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MEMBER_VIP
+        where VIP_STATUS = 1 AND VIP_LEVEL &gt; 1 AND LAST_POINT_UPDATE_TIME &lt; #{cpDate}
+    </select>
+
+    <select id="findByVipTypeAndBirthdayRightNow" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MEMBER_VIP
+        WHERE VIP_TYPE = #{vipType} AND
+        (DATEDIFF(CAST(CONCAT(YEAR(NOW()),DATE_FORMAT(BIRTHDAY,'-%m-%d'))AS DATE),CAST(DATE_FORMAT(NOW(),'%y-%m-%d') AS DATE)) BETWEEN 0 AND 7
+        OR/* or后面的是捎带解决跨年问题*/
+        DATEDIFF(CAST(CONCAT(YEAR(NOW())+1,DATE_FORMAT(BIRTHDAY,'-%m-%d'))AS DATE),CAST(DATE_FORMAT(NOW(),'%y-%m-%d') AS DATE)) BETWEEN 0 AND 7);
+    </select>
+    <select id="findBySvipLevelRatherThanOne" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM MEMBER_VIP WHERE VIP_TYPE = 0 AND VIP_LEVEL &gt; 1
+    </select>
+</mapper>

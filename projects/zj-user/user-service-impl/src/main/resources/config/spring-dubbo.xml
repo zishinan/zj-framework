@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath*:vip-provider-module.properties" ignore-unresolvable="true"/>
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="${app.name}" owner="${app.owner.name}" organization="${app.organization.name}"/>
+    <!-- 使用zookeeper广播注册中心暴露服务地址 -->
+    <dubbo:protocol name="${service.protocol}" port="${service.port}"
+                    accesslog="/usr/local/misc_apps/vip-service-provider/logs/access/vip-service-provider-dubbo.log"/>
+    <dubbo:monitor protocol="registry"/>
+    <dubbo:registry id="user-service-registry" protocol="${registry.protocol}" address="${registry.address}"/>
+
+    <!-- 声明需要暴露的服务接口 executes="50":一个服务提供者并行执行请求上限，即当Provider对一个服务的并发调用到上限后，新调用会Wait（Consumer可能到超时） timeout :调用超时 retry：重试次数 loadbalance
+      负载均衡算法 随机 random 轮训roundrobin、最不活跃优先 leastactive -->
+    <dubbo:service interface="com.zj.framework.service.user.UserService" ref="userService"
+                   version="1.0.0" timeout="3000" retries="0" loadbalance="random"/>
+
+
+    <dubbo:reference id="testService" registry="user-service-registry" timeout="10000" check="true"
+                     interface="com.test.service" version="1.0.0"/>
+
+</beans>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!-- Redis配置-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="6000"/>
+        <property name="maxIdle" value="300"/>
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+        <property name="minEvictableIdleTimeMillis" value="30000"/>
+        <property name="testOnBorrow" value="false"/>
+    </bean>
+
+    <bean id="shardedJedisSentinelPool" class="com.zj.framework.redis.support.ShardedJedisSentinelPool">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="masters">
+            <list>
+                <value>vip-system-6393</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="sentinels">
+            <set>
+                <value>192.168.1.136:26380</value>
+                <value>192.168.1.137:26380</value>
+                <value>192.168.1.138:26380</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
+    <!--mysql配置-->
+    <bean id="vip_master" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://192.168.9.61:3307/dj_vip?characterEncoding=utf8&amp;zeroDateTimeBehavior=round"/>
+        <property name="username" value="dml_dj_vip"/>
+        <property name="password" value="j1chhZMV9iBp"/>
+        <property name="validationQuery" value="SELECT 1"/>
+    </bean>
+
+    <bean id="vip_slave" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://192.168.9.62:3307/dj_vip?characterEncoding=utf8&amp;zeroDateTimeBehavior=round"/>
+        <property name="username" value="dml_dj_vip"/>
+        <property name="password" value="j1chhZMV9iBp"/>
+        <property name="validationQuery" value="SELECT 1"/>
+    </bean>
+
+    <!-- 适用于一个master和多个slaver的场景,并用roundrobin做负载均衡 -->
+    <bean id="dataSourceKey" class="com.zj.framework.mybatis.route.DataSourceKey">
+        <property name="writeKey" value="master"/>
+        <property name="readKeys">
+            <list>
+                <value>slave</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--配置读写分离  只需在service层方法上加注解@DataSource-->
+    <bean id="vip_dynamicDataSource" class="com.zj.framework.mybatis.route.DynamicDataSource">
+        <!-- 配置多数据源映射关系 -->
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="master" value-ref="vip_master"/>
+                <entry key="slave" value-ref="vip_slave"/>
+            </map>
+        </property>
+        <!-- 默认目标数据源为你主库数据源 -->
+        <property name="defaultTargetDataSource" ref="vip_master"/>
+    </bean>
+
+
+    <bean id="vip_sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="vip_dynamicDataSource"/>
+        <property name="configLocation" value="classpath:config/vip-sql-config.xml"/>
+    </bean>
+
+    <!-- myBatis配置多个sql源,用来扫描mapper接口 -->
+    <mybatis:scan base-package="com.zj.framework.service.user.impl.dao" factory-ref="vip_sqlSessionFactory"/>
+
+    <!-- 加入事务管理 -->
+    <bean id="vip_txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="vip_dynamicDataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="vip_txManager"/>
+
+</beans>
