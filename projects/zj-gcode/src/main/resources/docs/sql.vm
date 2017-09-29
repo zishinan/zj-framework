@@ -1,0 +1,6 @@
+#foreach($table in ${data})
+CREATE TABLE `$table.tableName` (
+`NAME`  varchar(50) NOT NULL COMMENT '名称' ,
+PRIMARY KEY (`$table.primaryKey`)
+);
+#end

@@ -14,9 +14,10 @@ public enum FieldType {
     /**
      * java类,普通pojo
      */
-    JAVA,
-    INT,
+    JAVA_BEAN,
+    INTEGER,
     BOOLEAN,
-    VARCHAR,
-    DATETIME
+    LONG,
+    STRING,
+    DATE
 }
