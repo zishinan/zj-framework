@@ -1,6 +1,26 @@
 #foreach($table in ${data})
 CREATE TABLE `$table.tableName` (
-`NAME`  varchar(50) NOT NULL COMMENT '名称' ,
-PRIMARY KEY (`$table.primaryKey`)
+#foreach($field in ${table.sqlFields})
+    `$field.fieldName` $field.sqlType.name ##
+#if($field.sqlType.defLength)##
+( ##
+#if($field.fieldLength > 0)##
+$field.fieldLength ##
+#else##
+$field.sqlType.defLength ##
+#end##
+) ##
+#end##
+#if($field.allowNull)##
+NULL ##
+#else##
+NOT NULL ##
+#end##
+#if($field.autoIncrement)##
+AUTO_INCREMENT ##
+#end##
+COMMENT '$field.content' ,
+#end
+    PRIMARY KEY (`$table.primaryKey`)
 );
 #end

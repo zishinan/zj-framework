@@ -11,7 +11,7 @@ import java.util.Date;
  * @date 2017-09-26 下午 3:12 <br/>
  */
 public class LoginInfo extends BaseTO {
-    protected Long loginInfoId;
+    private Long loginInfoId;
     private String userName;
     private String phoneNumber;
     private String email;

@@ -1,8 +1,8 @@
 package com.zj.framework.service.user.to;
 
+import com.zj.framework.baseto.to.BaseTO;
 import com.zj.framework.baseto.type.Gender;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +11,7 @@ import java.util.Date;
  * @description: 用户信息 <br/>
  * @date 2017-09-26 下午 3:12 <br/>
  */
-public class UserInfo implements Serializable {
+public class UserInfo extends BaseTO {
 	private Long loginInfoId;
 	private String realName;
 	private String cardId;

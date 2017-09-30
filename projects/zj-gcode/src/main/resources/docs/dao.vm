@@ -1,13 +1,13 @@
-#foreach($table in ${tables})
-CREATE TABLE `$table.tableName` (
-`CHANNEL_ID`  int NOT NULL COMMENT '游戏专区ID' ,
-`IOS_CATAGORY_ID`  tinyint NULL COMMENT '分类ID' ,
-`MANUAL_PKG_URL`  varchar(500) NULL COMMENT '手动修改的游戏包地址' ,
-`CHANNEL_PKG_URL`  varchar(500) NULL COMMENT '从专区拉取的最新游戏包地址' ,
-`SORT`  int NULL COMMENT '排序值（数值越大排序越前）' ,
-`CREATED_DATE`  datetime NOT NULL COMMENT '创建时间' ,
-`PUBLISH_DATE`  datetime NOT NULL COMMENT '发布时间' ,
-`OPERATOR`  varchar(50) BINARY NULL COMMENT '最后操作人' ,
-PRIMARY KEY (`$table.primaryKey`)
-);
-#end
+package ${data.packageName}.impl.dao;
+
+import ${data.packageName}.to.${data.tableName};
+
+public interface ${data.tableName}Mapper {
+    int save(${data.tableName} ${data.tableNameLower});
+
+    ${data.tableName} selectByPrimaryKey(${data.primaryField.fieldType} ${data.primaryField.fieldName});
+
+    int delete(${data.primaryField.fieldType} ${data.primaryField.fieldName});
+
+    int update(${data.tableName} ${data.tableNameLower});
+}

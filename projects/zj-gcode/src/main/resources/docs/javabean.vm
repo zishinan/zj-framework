@@ -1,0 +1,22 @@
+package ${data.packageName}.to;
+
+import com.zj.framework.baseto.to.BaseTO;
+
+/**
+* @author Mr. xi.yang<br/>
+* @version V1.0 <br/>
+* @description: ${data.description} <br/>
+* @date ${data.dateTime} <br/>
+*/
+public class ${data.tableName} extends BaseTO {
+#foreach($field in ${data.fields})
+    private ${field.fieldType} ${field.fieldName};
+#end
+#foreach($field in ${data.fields})
+    public ${field.fieldType} get${field.fiedNameUp}(){
+        return ${field.fieldName};
+    }
+    public void set${field.fiedNameUp}(${field.fieldType} ${field.fieldName}) {
+        this.${field.fieldName} = ${field.fieldName};
+    }
+#end

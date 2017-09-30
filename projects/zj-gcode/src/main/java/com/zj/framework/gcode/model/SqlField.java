@@ -1,6 +1,7 @@
 package com.zj.framework.gcode.model;
 
 import com.zj.framework.gcode.type.FieldType;
+import com.zj.framework.gcode.type.SqlType;
 
 /**
  * @author Mr. xi.yang<br/>
@@ -11,6 +12,7 @@ import com.zj.framework.gcode.type.FieldType;
 public class SqlField {
     private String fieldName;
     private FieldType fieldType;
+    private SqlType sqlType;
     private int fieldLength;
     private String defaultValue;
     private boolean allowNull;
@@ -40,6 +42,14 @@ public class SqlField {
 
     public void setFieldLength(int fieldLength) {
         this.fieldLength = fieldLength;
+    }
+
+    public SqlType getSqlType() {
+        return sqlType;
+    }
+
+    public void setSqlType(SqlType sqlType) {
+        this.sqlType = sqlType;
     }
 
     public String getDefaultValue() {

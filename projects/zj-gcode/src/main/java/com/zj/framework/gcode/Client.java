@@ -1,10 +1,10 @@
 package com.zj.framework.gcode;
 
-import com.zj.framework.excel.ExcelUtil;
-import com.zj.framework.fastjson.JsonUtil;
+import com.zj.framework.gcode.model.SqlField;
 import com.zj.framework.gcode.model.SqlTable;
+import com.zj.framework.gcode.type.SqlType;
 import com.zj.framework.velocity.VmUtil;
-import com.zj.util.file.PropertiesUtil;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,9 @@ public class Client {
 //        获取表配置
         List<SqlTable> sqlTableList = getSqlTables();
 //        生成sql文件
-        VmUtil.vmToFile("E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\","sql.vm",sqlTableList,"E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\init.sql");
+        Map<String,Object> map = new HashedMap();
+        map.put("data",sqlTableList);
+        VmUtil.vmToFile("E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\","sql.vm",map,"E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\init.sql");
 //        生成java文件
 
 //        生成mybatis文件
@@ -47,6 +49,16 @@ public class Client {
 //        String excelLocation = PropertiesUtil.getProperty(LOCATION_EXCEL);
         for (int i = 0; i < 9; i++) {
             SqlTable sqlTable = new SqlTable();
+            List<SqlField> sqlFields = new ArrayList<>();
+            for (int j = 0; j <i; j++) {
+                SqlField sqlField = new SqlField();
+                sqlField.setFieldName("testName"+j);
+                sqlField.setSqlType(SqlType.DATETIME);
+                sqlField.setContent("content test"+j);
+                sqlField.setAutoIncrement(true);
+                sqlFields.add(sqlField);
+            }
+            sqlTable.setSqlFields(sqlFields);
             sqlTable.setTableName("TEST_TABLE_NAME"+i);
             sqlTable.setPrimaryKey("PRI_KEY"+i);
             result.add(sqlTable);
