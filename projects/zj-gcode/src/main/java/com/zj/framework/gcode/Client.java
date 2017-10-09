@@ -1,7 +1,7 @@
 package com.zj.framework.gcode;
 
-import com.zj.framework.gcode.model.SqlField;
-import com.zj.framework.gcode.model.SqlTable;
+import com.zj.framework.gcode.model.PropField;
+import com.zj.framework.gcode.model.PropTable;
 import com.zj.framework.gcode.type.SqlType;
 import com.zj.framework.velocity.VmUtil;
 import org.apache.commons.collections.map.HashedMap;
@@ -34,7 +34,7 @@ public class Client {
 //        获取项目配置
 //        PropertiesUtil.load("gcode.properties");
 //        获取表配置
-        List<SqlTable> sqlTableList = getSqlTables();
+        List<PropTable> sqlTableList = getSqlTables();
 //        生成sql文件
         Map<String,Object> map = new HashedMap();
         map.put("data",sqlTableList);
@@ -44,21 +44,21 @@ public class Client {
 //        生成mybatis文件
     }
 
-    private static List<SqlTable> getSqlTables() {
-        List<SqlTable> result = new ArrayList<>();
+    private static List<PropTable> getSqlTables() {
+        List<PropTable> result = new ArrayList<>();
 //        String excelLocation = PropertiesUtil.getProperty(LOCATION_EXCEL);
         for (int i = 0; i < 9; i++) {
-            SqlTable sqlTable = new SqlTable();
-            List<SqlField> sqlFields = new ArrayList<>();
+            PropTable sqlTable = new PropTable();
+            List<PropField> sqlFields = new ArrayList<>();
             for (int j = 0; j <i; j++) {
-                SqlField sqlField = new SqlField();
+                PropField sqlField = new PropField();
                 sqlField.setFieldName("testName"+j);
                 sqlField.setSqlType(SqlType.DATETIME);
                 sqlField.setContent("content test"+j);
                 sqlField.setAutoIncrement(true);
                 sqlFields.add(sqlField);
             }
-            sqlTable.setSqlFields(sqlFields);
+            sqlTable.setPropFields(sqlFields);
             sqlTable.setTableName("TEST_TABLE_NAME"+i);
             sqlTable.setPrimaryKey("PRI_KEY"+i);
             result.add(sqlTable);

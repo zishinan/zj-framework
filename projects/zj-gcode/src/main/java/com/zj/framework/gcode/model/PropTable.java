@@ -5,13 +5,13 @@ import java.util.List;
 /**
  * @author Mr. xi.yang<br/>
  * @version V1.0 <br/>
- * @description: sql表 <br/>
+ * @description: sql表和实体定义 <br/>
  * @date 2017-09-27 上午 10:12 <br/>
  */
-public class SqlTable {
+public class PropTable {
     private String tableName;
     private String primaryKey;
-    private List<SqlField> sqlFields;
+    private List<PropField> propFields;
 
     public String getTableName() {
         return tableName;
@@ -29,11 +29,11 @@ public class SqlTable {
         this.primaryKey = primaryKey;
     }
 
-    public List<SqlField> getSqlFields() {
-        return sqlFields;
+    public List<PropField> getPropFields() {
+        return propFields;
     }
 
-    public void setSqlFields(List<SqlField> sqlFields) {
-        this.sqlFields = sqlFields;
+    public void setPropFields(List<PropField> propFields) {
+        this.propFields = propFields;
     }
 }
