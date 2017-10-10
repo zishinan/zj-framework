@@ -16,6 +16,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.zj.framework.springmvc</groupId>
+            <artifactId>zj-springmvc</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
