@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zj.framework.gcode</groupId>
-    <artifactId>zj-gcode</artifactId>
+    <groupId>com.zj.framework.cilizhu</groupId>
+    <artifactId>zj-cilizhu</artifactId>
     <version>1.0.0</version>
-    <name>zj-gcode</name>
+    <name>zj-cilizhu</name>
     <packaging>jar</packaging>
 
     <properties>
@@ -17,33 +17,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.zj.framework.excel</groupId>
-            <artifactId>zj-excel</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.util</groupId>
-            <artifactId>zj-util</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.fastjson</groupId>
-            <artifactId>zj-fastjson</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.velocity</groupId>
-            <artifactId>zj-velocity</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.zj.framework.logback</groupId>
             <artifactId>zj-logback</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.zj.framework.springtest</groupId>
-            <artifactId>zj-springtest</artifactId>
+            <groupId>com.zj.framework.httpclient</groupId>
+            <artifactId>zj-httpclient</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zj.framework.fastjson</groupId>
+            <artifactId>zj-fastjson</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

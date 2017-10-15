@@ -13,6 +13,7 @@ public class ${data.tableName} extends BaseTO {
     private ${field.fieldType} ${field.fieldName};
 #end
 #foreach($field in ${data.fields})
+
     public ${field.fieldType} get${field.fiedNameUp}(){
         return ${field.fieldName};
     }

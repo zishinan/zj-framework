@@ -1,9 +1,6 @@
 package com.zj.framework.httpclient;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
+import org.apache.http.*;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -16,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -171,15 +169,49 @@ public class HttpUtil {
 		HttpGet get = new HttpGet(url);
 		
 		HttpResponse res = client.execute(get);
-		
 		if(res.getStatusLine().getStatusCode() == STATE_OK){
-			
 			HttpEntity entity = res.getEntity();
-			return EntityUtils.toString(entity);
-		}
-		else {
+			if (entity != null) {
+				String charset = getContentCharSet(entity);
+				// 使用EntityUtils的toString方法，传递编码，默认编码是ISO-8859-1
+				return EntityUtils.toString(entity, charset);
+			}
+		}else {
 			return null;
 		}
+		return null;
+	}
+
+	/**
+	 * 默认编码utf -8
+	 * Obtains character set of the entity, if known.
+	 *
+	 * @param entity must not be null
+	 * @return the character set, or null if not found
+	 * @throws ParseException if header elements cannot be parsed
+	 * @throws IllegalArgumentException if entity is null
+	 */
+	public static String getContentCharSet(final HttpEntity entity)
+			throws ParseException {
+
+		if (entity == null) {
+			throw new IllegalArgumentException("HTTP entity may not be null");
+		}
+		String charset = null;
+		if (entity.getContentType() != null) {
+			HeaderElement values[] = entity.getContentType().getElements();
+			if (values.length > 0) {
+				NameValuePair param = values[0].getParameterByName("charset" );
+				if (param != null) {
+					charset = param.getValue();
+				}
+			}
+		}
+
+		if(StringUtils.isEmpty(charset)){
+			charset = "UTF-8";
+		}
+		return charset;
 	}
 	
 	public static String getWithHeader(Map<String, String> header,String url) throws ParseException, IOException{

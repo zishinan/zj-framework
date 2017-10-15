@@ -9,10 +9,11 @@ import com.zj.framework.gcode.type.SqlType;
  * @description: 字段定义 <br/>
  * @date 2017-09-27 上午 10:13 <br/>
  */
-public class PropField {
+public class SqlField {
     /**
-     * javabean属性类型
+     * 首字母大写的属性名
      */
+    private String firstUpName;
     private FieldType fieldType;
     /**
      * sql属性类型
