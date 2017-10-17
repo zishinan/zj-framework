@@ -9,7 +9,7 @@ import com.zj.framework.gcode.type.SqlType;
  * @description: 字段定义 <br/>
  * @date 2017-09-27 上午 10:13 <br/>
  */
-public class SqlField {
+public class PropField {
     /**
      * 首字母大写的属性名
      */

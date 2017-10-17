@@ -16,6 +16,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.zj.framework.logback</groupId>
+            <artifactId>zj-logback</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.zj.framework.baseto</groupId>
             <artifactId>zj-baseto</artifactId>
             <version>1.0.0</version>
@@ -24,7 +29,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
-            <scope>provided</scope>
         </dependency>
         <!-- spring framework dependency -->
         <dependency>
