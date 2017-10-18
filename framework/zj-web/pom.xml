@@ -34,6 +34,11 @@
             <artifactId>zj-springtest</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.zj.framework.fastjson</groupId>
+            <artifactId>zj-fastjson</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -15,18 +15,18 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2017-07-13 上午 9:56 <br/>
  */
 @Controller
-public class IndexController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
-    @RequestMapping("/index")
+public class SearchController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SearchController.class);
+    @RequestMapping("/search.html")
     public ModelAndView index(HttpServletRequest request){
         LOGGER.info("index....");
-        return new ModelAndView("index");
+        return new ModelAndView("search/search");
     }
 
     @RequestMapping("/")
     public ModelAndView indexNull(HttpServletRequest request){
         LOGGER.info("=====null");
-        return new ModelAndView("index");
+        return new ModelAndView("search/search");
     }
 
 }

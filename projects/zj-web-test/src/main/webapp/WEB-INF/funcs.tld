@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <description>Functions for JSTL</description>
+    <display-name>JSTL Functions</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>JSTLFuns</short-name>
+    <uri/>
+
+    <function>
+        <name>getResourcePath</name>
+        <function-class>com.downjoy.app.vipserver.web.util.JSTLFuncs</function-class>
+        <function-signature>java.lang.String getResourcePath()</function-signature>
+        <example>
+            ${funcs:getResourcePath()}
+        </example>
+    </function>
+
+    <function>
+        <name>getContextPath</name>
+        <function-class>com.downjoy.app.vipserver.web.util.JSTLFuncs</function-class>
+        <function-signature>java.lang.String getContextPath()</function-signature>
+        <example>
+            ${funcs:getContextPath()}
+        </example>
+    </function>
+
+</taglib>
