@@ -1,15 +1,12 @@
 package com.zj.util.date;
 
-import com.zj.util.string.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
 
 public class DateUtil
 {
@@ -154,28 +151,12 @@ public class DateUtil
 	}
 	
 	/**
-	 * 比较两个时间相差几天
-	 * <a href="xi.yang@i-jia.net">yangxi</a>
-	 * @param start
-	 * @param end
-	 * @return
-	 */
-	public static int getDiffDay(long start,long end){
-		long diff = end - start;
-		if(diff > 0){
-			diff = diff + DAY_LONG - 1;
-		}
-		int diffDay = (int) ((diff)/DAY_LONG);
-		return diffDay;
-	}
-	
-	/**
 	 * 获取格式化时间，昨天、今天、明天或者2016-01-01
 	 * <a href="xi.yang@i-jia.net">yangxi</a>
 	 * @param time
 	 * @return
 	 */
-	public static String getFmtTimeWithCurday(long time){
+	/*public static String getFmtTimeWithCurday(long time){
 		long curDayLong = covertString2Long(getCurrentTimeString(yyyy_MM_dd));
 		int diffDay = getDiffDay(time, curDayLong);
 		switch (diffDay) {
@@ -188,7 +169,7 @@ public class DateUtil
 		default:
 			return fmtLong2String(time, yyyy_MM_dd);
 		}
-	}
+	}*/
 
 	/**
 	 * 根据long获得当前是几点（24小时制）
@@ -237,63 +218,7 @@ public class DateUtil
 		return fmtLong2String(System.currentTimeMillis(), datePrex);
 	}
 
-	/**
-	 * 将String类型的格式化字符串转为long类型<br/>
-	 * 支持的String格式：<br/>
-	 * yyyyMMdd<br/>
-	 * yyyy-MM-dd<br/>
-	 * yyMMdd<br/>
-	 * yyyy-MM-dd HH:mm:ss<br/>
-	 * yyyyMMddHHmm<br/>
-	 * @param date
-	 * @return
-	 */
-	public static long covertString2Long(String date)
-	{
-		Pattern yyyyMMdd = Pattern.compile("\\d{8}");
-		Pattern yyyyMMddHHss = Pattern.compile("\\d{12}");
-		Pattern yyyy_MM_HH = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}");
-		Pattern yyMMdd = Pattern.compile("\\d{6}");
-		Pattern yyyy_MM_dd_HH_mm_ss = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}");
 
-		SimpleDateFormat sdf = null;
-		if (StringUtil.isBlank(date))
-		{
-			return -1;
-		}
-		if (yyyyMMdd.matcher(date).matches())
-		{
-			sdf = new SimpleDateFormat("yyyyMMdd");
-		}
-		else if (yyyy_MM_HH.matcher(date).matches())
-		{
-			sdf = new SimpleDateFormat("yyyy-MM-dd");
-		}
-		else if (yyMMdd.matcher(date).matches())
-		{
-			sdf = new SimpleDateFormat("yyMMdd");
-		}
-		else if (yyyy_MM_dd_HH_mm_ss.matcher(date).matches())
-		{
-			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		}
-		else if (yyyyMMddHHss.matcher(date).matches())
-		{
-			sdf = new SimpleDateFormat("yyyyMMddHHmm");
-		}
-
-		try
-		{
-			Calendar c = Calendar.getInstance();
-			c.setTimeInMillis(sdf.parse(date).getTime());
-			return c.getTimeInMillis();
-		}
-		catch (ParseException e)
-		{
-			e.printStackTrace();
-		}
-		return 0;
-	}
 	/**
 	 * 获取本周第一天 <a href="xi.yang@i-jia.net">yangxi</a>
 	 * 
@@ -322,44 +247,44 @@ public class DateUtil
 		LOGGER.error(dateString);
 		return dateString;
 	}
-	public static long getNowWeekBeginTime() {
+	/*public static long getNowWeekBeginTime() {
 		return covertString2Long(getNowWeekBegin());
-	}
+	}*/
 
-	public static long getNowWeekEndTime() {
+	/*public static long getNowWeekEndTime() {
 		return getNowWeekBeginTime() + WEEK_LONG - 1;
-	}
-	
-	public static String getNowWeekEnd() {
+	}*/
+
+	/*public static String getNowWeekEnd() {
 		return fmtLong2String(getNowWeekEndTime(), yyyy_MM_dd_HH_mm_ss);
-	}
+	}*/
 
 	/**
 	 * 获取本日开始时间 <a href="xi.yang@i-jia.net">yangxi</a>
 	 * 
 	 * @return
 	 */
-	public static long getNowDayBeginTime() {
+	/*public static long getNowDayBeginTime() {
 		long curTime = System.currentTimeMillis();
 		return covertString2Long(fmtLong2String(curTime, yyyy_MM_dd));
-	}
+	}*/
 
-	public static long getNowDayEndTime() {
+	/*public static long getNowDayEndTime() {
 		return getNowDayBeginTime() + DAY_LONG -1;
-	}
+	}*/
 
 	/**
 	 * 获取本月开始时间 <a href="xi.yang@i-jia.net">yangxi</a>
 	 * 
 	 * @return
 	 */
-	public static long getNowMonthBeginTime() {
+	/*public static long getNowMonthBeginTime() {
 		return covertString2Long(getNowMonthBegin());
-	}
+	}*/
 
-	public static long getNowMonthEndTime() {
+	/*public static long getNowMonthEndTime() {
 		return getNowMonthBeginTime() + MONTH_LONG-1;
-	}
+	}*/
 
 	/**
 	 * 获取本月第一天 <a href="xi.yang@i-jia.net">yangxi</a>
@@ -392,15 +317,15 @@ public class DateUtil
 	 * 
 	 * @return
 	 */
-	public static long getNowYearBeginTime() {
+	/*public static long getNowYearBeginTime() {
 		return covertString2Long(getNowYearBegin());
-	}
+	}*/
 
-	public static long getNowYearEndTime() {
+	/*public static long getNowYearEndTime() {
 		return getNowYearBeginTime() + YEAR_LONG-1;
-	}
+	}*/
 
-	public static long getNowQuarterBeginTime() {
+	/*public static long getNowQuarterBeginTime() {
 		Calendar c = Calendar.getInstance();
 		int currentMonth = c.get(Calendar.MONTH);
 		try {
@@ -419,5 +344,5 @@ public class DateUtil
 			e.printStackTrace();
 		}
 		return 0L;
-	}
+	}*/
 }
