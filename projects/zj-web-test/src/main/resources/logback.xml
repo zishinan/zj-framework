@@ -28,7 +28,7 @@
         <appender-ref ref="FILE"/>
     </logger>
 
-    <root level="DEBUG">
+    <root level="INFO`b">
         <appender-ref ref="CONSOLE" />
         <!--<appender-ref ref="FILE" />-->
     </root>

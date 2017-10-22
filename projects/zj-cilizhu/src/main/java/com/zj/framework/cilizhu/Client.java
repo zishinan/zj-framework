@@ -23,14 +23,14 @@ public class Client {
     private static final String mainUrl = "http://www.cilizhuzhu.org/torrent/%s.html";
     private static final String magTarget = "magnet:?xt=urn:btih:";
     public static void main(String[] args) throws IOException {
-        String search = "无码";
+        String search = "左右+vr";
         for (int i = 0; i < 10000; i++) {
             String itag = "";
-            if(i > 0){
-                itag = "_"+i;
+            if (i > 0) {
+                itag = "_" + i;
             }
-            String result = HttpUtil.get(String.format(mainUrl, search+itag));
-            if(!result.contains("<div class=\"col-sm-2 col-lg-1 hidden-xs text-right size\">")){
+            String result = HttpUtil.get(String.format(mainUrl, search + itag));
+            if (!result.contains("<div class=\"col-sm-2 col-lg-1 hidden-xs text-right size\">")) {
                 System.out.println("搜索完毕！");
                 System.exit(0);
             }
@@ -47,20 +47,20 @@ public class Client {
             if(magnetCode.length() > 50){
                 continue;
             }
-            String title = str.substring(str.indexOf("title=\"")+7,str.indexOf("\">")).toLowerCase()
-                    .replace(" ","")
-                    .replace("-","")
-                    .replace("_","")
-                    .replace("+","");
-            if(title.length() > 50){
-                continue;
-            }
+            String title = str.substring(str.indexOf("title=\"")+7,str.indexOf("\">")).toLowerCase();
+//                    .replace(" ","")
+//                    .replace("-","")
+//                    .replace("_","")
+//                    .replace("+","");
+//            if(title.length() > 50){
+//                continue;
+//            }
             if(codes.contains(magnetCode)){
                 continue;
             }
-            if(titles.contains(title)){
-                continue;
-            }
+//            if(titles.contains(title)){
+//                continue;
+//            }
             codes.add(magnetCode);
             titles.add(title);
             System.out.println(title + "===" + magTarget+magnetCode);

@@ -34,9 +34,9 @@
                     </div>
                     <br>
                     <div class="search-form">
-                        <form action="index.html" method="get">
+                        <form action="/search.html" method="get">
                             <div class="input-group">
-                                <input type="text" placeholder="请输入搜索内容。 注意：由于该搜索过于强大，请勿输入违反法律规定的内容！" name="search" class="form-control input-lg">
+                                <input type="text" placeholder="${search == null ? '请输入搜索内容。 注意：由于该搜索过于强大，请勿输入违反法律规定的内容！':search}" name="search" class="form-control input-lg">
                                 <div class="input-group-btn">
                                     <button class="btn btn-lg btn-primary" type="submit">
                                         搜索
@@ -52,50 +52,24 @@
                             <tr>
                                 <th data-field="name">名称</th>
                                 <th data-field="url">下载连接</th>
-                                <th data-field="license">赞</th>
-                                <th data-field="description">怼</th>
-                                <th data-field="url">举报</th>
-                                <th data-field="url">标记</th>
                             </tr>
                             </thead>
-                            <tr>
-                                <td>百度一下，你就完了</td>
-                                <td>www.baidu.com</td>
-                                <td>zan</td>
-                                <td>dui</td>
-                                <td>tousu</td>
-                                <td>yikan</td>
-                            </tr>
-                            <tr>
-                                <td>百度一下，你就完了</td>
-                                <td>www.baidu.com</td>
-                                <td>zan</td>
-                                <td>dui</td>
-                                <td>tousu</td>
-                                <td>yikan</td>
-                            </tr>
-                            <tr>
-                                <td>百度一下，你就完了</td>
-                                <td>www.baidu.com</td>
-                                <td>zan</td>
-                                <td>dui</td>
-                                <td>tousu</td>
-                                <td>yikan</td>
-                            </tr>
-                            <tr>
-                                <td>百度一下，你就完了</td>
-                                <td>www.baidu.com</td>
-                                <td>zan</td>
-                                <td>dui</td>
-                                <td>tousu</td>
-                                <td>yikan</td>
-                            </tr>
+                            <c:forEach items="${data}" var="v">
+                                <tr>
+                                    <td><a href="${v.url}">${v.name}</a></td>
+                                    <td>${v.url}</td>
+                                </tr>
+                            </c:forEach>
                         </table>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="text-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-lg">获取更多精彩内容</button>
+                            <form action="/search.html" method="get">
+                                <input type="hidden" name="search" value="${search}"/>
+                                <input type="hidden" name="page" value="${page+1}"/>
+                                <button type="submit" class="btn btn-default btn-lg">获取更多精彩内容</button>
+                            </form>
                         </div>
                     </div>
                 </div>
