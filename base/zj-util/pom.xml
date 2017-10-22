@@ -13,6 +13,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<dependency>
 			<groupId>com.zj.framework.baseto</groupId>
 			<artifactId>zj-baseto</artifactId>
 			<version>1.0.0</version>

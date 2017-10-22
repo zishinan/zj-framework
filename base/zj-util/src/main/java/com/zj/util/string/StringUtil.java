@@ -1,5 +1,7 @@
 package com.zj.util.string;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.*;
 
 public class StringUtil
@@ -61,7 +63,7 @@ public class StringUtil
 	 * @return
 	 */
 	public static boolean containsId(String ids,int id){
-		if(isBlank(ids)){
+		if(isWebBlank(ids)){
 			return false;
 		}
 		String tag = "{"+id+"}";
@@ -74,17 +76,17 @@ public class StringUtil
 	/**
 	 * 根据ids字符串（形如“{1}{2}{3}”）获取id集
 	 * <a href="xi.yang@i-jia.net">yangxi</a>
-	 * @param id
+	 * @param ids
 	 * @return
 	 */
 	public static List<Integer> getIdList(String ids){
 		List<Integer> result = new ArrayList<Integer>();
-		if(isBlank(ids)){
+		if(isWebBlank(ids)){
 			return result;
 		}
 		String[] allIds = ids.replace("｛", "{").replace("｝", "}").split("\\}\\{");
 		for (String idString : allIds) {
-			if(StringUtil.isBlank(idString)){
+			if(isWebBlank(idString)){
 				continue;
 			}
 			int id = 0;
@@ -155,13 +157,13 @@ public class StringUtil
 	}
 	
 	/**
-	 * 判断一个字符串是否为空
+	 * 在web项目中判断一个字符串是否为空
 	 * @param s
 	 * @return trim后length>0 and not equals "null" and not equals "undefined" 返回true
 	 */
-	public static boolean isNotBlank(String s)
+	public static boolean isNotWebBlank(String s)
 	{
-		if(s == null){
+		if(StringUtils.isBlank(s)){
 			return false;
 		}
 		String ss = s.trim();
@@ -170,16 +172,16 @@ public class StringUtil
 		}
 		return true;
 	}
-	
-	public static boolean isBlank(String s)
+
+	public static boolean isWebBlank(String s)
 	{
-		if(isNotBlank(s))
+		if(isNotWebBlank(s))
 		{
 			return false;
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 获取一个随机的小写字母
 	 * @return
