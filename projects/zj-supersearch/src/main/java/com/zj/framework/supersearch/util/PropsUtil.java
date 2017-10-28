@@ -1,4 +1,4 @@
-package com.downjoy.app.vipserver.web.util;
+package com.zj.framework.supersearch.util;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.downjoy.app.vipserver.web.util;
+package com.zj.framework.supersearch.util;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
@@ -7,7 +7,6 @@ import org.apache.commons.lang.StringUtils;
  * @author Mr. Zhaodong<br/>
  * @version V1.0 <br/>
  * @name: CastUtil <br/>
- * @package com.downjoy.medal.front.utils <br/>
  * @description: 转型操作工具类<br/>
  * @date 2016/8/30 16:49 <br/>
  */

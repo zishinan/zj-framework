@@ -1,4 +1,4 @@
-package com.downjoy.app.vipserver.web.controller;
+package com.zj.framework.supersearch.controller;
 
 import com.zj.framework.cilizhu.CilizhuSearchService;
 import com.zj.framework.cilizhu.SearchResult;
@@ -22,7 +22,7 @@ import java.util.Map;
 @Controller
 public class SearchController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchController.class);
-    @RequestMapping("/search.html")
+    @RequestMapping(value = {"/search.html","/"})
     public ModelAndView index(HttpServletRequest request){
         String seaKey = request.getParameter("search");
         Map<String,Object> model = new HashMap<>();

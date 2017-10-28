@@ -12,7 +12,7 @@
 
     <function>
         <name>getResourcePath</name>
-        <function-class>com.downjoy.app.vipserver.web.util.JSTLFuncs</function-class>
+        <function-class>com.zj.framework.supersearch.util.JSTLFuncs</function-class>
         <function-signature>java.lang.String getResourcePath()</function-signature>
         <example>
             ${funcs:getResourcePath()}
@@ -21,7 +21,7 @@
 
     <function>
         <name>getContextPath</name>
-        <function-class>com.downjoy.app.vipserver.web.util.JSTLFuncs</function-class>
+        <function-class>com.zj.framework.supersearch.util.JSTLFuncs</function-class>
         <function-signature>java.lang.String getContextPath()</function-signature>
         <example>
             ${funcs:getContextPath()}

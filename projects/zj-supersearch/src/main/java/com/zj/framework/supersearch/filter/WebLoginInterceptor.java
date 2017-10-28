@@ -1,4 +1,4 @@
-package com.downjoy.app.vipserver.web.filter;
+package com.zj.framework.supersearch.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
