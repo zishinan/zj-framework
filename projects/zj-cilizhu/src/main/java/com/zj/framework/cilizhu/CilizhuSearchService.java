@@ -18,7 +18,7 @@ public class CilizhuSearchService {
                 seaKey = seaKey+"_"+page;
             }
             String result = HttpUtil.get(String.format(mainUrl, seaKey));
-            if (!result.contains("<div class=\"col-sm-2 col-lg-1 hidden-xs text-right size\">")) {
+            if (!result.contains("col-sm-2 col-lg-1 hidden-xs text-right size")) {
                 return searchResults;
             }
             searchResults.addAll(getAll(result));
@@ -31,7 +31,7 @@ public class CilizhuSearchService {
 
     public static List<SearchResult> getAll(String result){
         List<SearchResult> list = new ArrayList<SearchResult>();
-        for (String str : result.split("<a target=\"_blank\" href=\"http://www.cilizhuzhu.org/magnet/")) {
+        for (String str : result.split("<a target=\"_blank\" href=\"http://www.cilizhu1.com/magnet/")) {
             String magnetCode = str.substring(0,str.indexOf(".html"));
             if(magnetCode.length() > 50){
                 continue;
