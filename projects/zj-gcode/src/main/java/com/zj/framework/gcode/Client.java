@@ -1,5 +1,6 @@
 package com.zj.framework.gcode;
 
+import com.zj.framework.excel.ExcelUtil;
 import com.zj.framework.gcode.model.PropField;
 import com.zj.framework.gcode.model.PropTable;
 import com.zj.framework.gcode.type.SqlType;
@@ -20,25 +21,32 @@ import java.util.Map;
  */
 public class Client {
     private static final Logger logger = LoggerFactory.getLogger(Client.class);
+    /**
+     * 模版路径
+     */
+    private static final String VM_PATH = "E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\vm\\";
+    /**
+     * 代码定义包名
+     */
+    private static final String PROJECT_PACKAGE_NAME = "com.ouyang.test";
+    /**
+     * 生成文项目路径
+     */
+    private static final String PROJECT_PATH = "E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs";
+    /**
+     *
+     */
+    private static final String EXCEL_PATH = "F:\\当乐\\迭代记录\\2017_10_20_客服系统V3_0\\data.xlsx";
 
-    private static final String LOCATION_EXCEL = "location.excel";
-    private static final String GCODE_LOCATION_SQL = "gcode.location.sql";
-    private static final String GCODE_LOCATION_JAVA = "gcode.location.java";
-    private static final String GCODE_LOCATION_MYBATIS = "gcode.location.mybatis";
-    private static final String GCODE_JAVA_PACKAGE = "gcode.java.package";
 
-
-    private static final String CLASSPATH = "classpath";
-    private static final String CLASSPATH_CLASS = "classpath.resource.loader.class";
     public static void main(String[] args) {
-//        获取项目配置
-//        PropertiesUtil.load("gcode.properties");
-//        获取表配置
+//        获取excel配置
         List<PropTable> sqlTableList = getSqlTables();
+//        完善数据
 //        生成sql文件
         Map<String,Object> map = new HashedMap();
         map.put("data",sqlTableList);
-        VmUtil.vmToFile("E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\","sql.vm",map,"E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\init.sql");
+//        VmUtil.vmToFile("E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\","sql.vm",map,"E:\\myworkspace\\zj-framework\\projects\\zj-gcode\\src\\main\\resources\\docs\\init.sql");
 //        生成java文件
 
 //        生成mybatis文件
@@ -46,22 +54,15 @@ public class Client {
 
     private static List<PropTable> getSqlTables() {
         List<PropTable> result = new ArrayList<>();
-//        String excelLocation = PropertiesUtil.getProperty(LOCATION_EXCEL);
-        for (int i = 0; i < 9; i++) {
-            PropTable sqlTable = new PropTable();
-            List<PropField> sqlFields = new ArrayList<>();
-            for (int j = 0; j <i; j++) {
-                PropField sqlField = new PropField();
-                sqlField.setFieldName("testName"+j);
-                sqlField.setSqlType(SqlType.DATETIME);
-                sqlField.setContent("content test"+j);
-                sqlField.setAutoIncrement(true);
-                sqlFields.add(sqlField);
+//        理论上不超过100000个表
+        for (int i = 0; i < 100000; i++) {
+            List<Map<String, Object>> datas = ExcelUtil.getExcel2Maps(EXCEL_PATH,i);
+            if(datas == null || datas.size() == 0){
+                return result;
             }
-            sqlTable.setPropFields(sqlFields);
-            sqlTable.setTableName("TEST_TABLE_NAME"+i);
-            sqlTable.setPrimaryKey("PRI_KEY"+i);
-            result.add(sqlTable);
+            logger.info("data size ==="+datas.size());
+            PropTable propTable = new PropTable();
+            result.add(propTable);
         }
         return result;
     }

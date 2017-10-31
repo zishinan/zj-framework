@@ -19,39 +19,7 @@ public class ExcelUtil {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExcelUtil.class);
 	public static final String SEPARATOR = ",";
 	public static final String CONNECTOR = "-";
-	public static void main(String[] args) {
-//		try {
-//			String fileName = "测试文件.xls";
-//			String title = "测试表格";
-//			String[] headers = {"名字","电话"};
-//			List<List<String>> dataSet = new ArrayList<List<String>>();
-//			for (int i = 0; i < 100; i++) {
-//				List<String> data = new ArrayList<String>();
-//				data.add("演戏"+i);
-//				data.add("15882068471"+i);
-//				dataSet.add(data);
-//			}
-//			ExcelData excelData = new ExcelData(fileName, title, headers, dataSet);
-//			poiExportExcel(excelData);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		String fileName = "text.xlsx";
-		try {
-			List<Map<String, Object>> list = getExcel2Maps(fileName, 0);
-			StringBuffer sb = new StringBuffer();
-			for (Map<String, Object> map : list) {
-				String id = map.get("id")+"";
-				String aid = id.substring(id.indexOf("_")+1,id.length());
-				System.out.println(id + "===" + aid);
-				sb.append(aid).append("\n");
-			}
-			System.out.println(sb.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	/**
 	 * @Description 读取excel文件
 	 * @param filePath 文件路径
@@ -64,38 +32,39 @@ public class ExcelUtil {
 			File file = new File(filePath);
 			System.out.println(file.getAbsolutePath());
 			inputStream = new FileInputStream(file);
-		} catch (Exception e) {
-			LOGGER.error("error to get inputStream");
-		}
-		Sheet sheet = getSheet(filePath, inputStream, sheetIndex);
-		ArrayList<ArrayList<String>> dataList  = readExcel(sheet, "1-", getColumnNumber(sheet, "1-"));
-		
-		List<Map<String, Object>> result = new ArrayList<>();
-		if(dataList == null || dataList.size() <= 0){
-			return result;
-		}
-		List<String> keys = dataList.get(0);
-		for (int i = 1; i < dataList.size(); i++) {
-			Map<String, Object> map = new HashMap<>();
-			if(dataList.get(i).size() < keys.size()){
-				LOGGER.error("数据长度和title不匹配");
-				return null;
+			Sheet sheet = getSheet(filePath, inputStream, sheetIndex);
+			ArrayList<ArrayList<String>> dataList  = readExcel(sheet, "1-", getColumnNumber(sheet, "1-"));
+
+			List<Map<String, Object>> result = new ArrayList<>();
+			if(dataList == null || dataList.size() <= 0){
+				return result;
 			}
-			for (int j = 0; j < keys.size(); j++) {
-				String key = keys.get(j);
-				if(null == key){
-					LOGGER.error("title 为空了");
+			List<String> keys = dataList.get(0);
+			for (int i = 1; i < dataList.size(); i++) {
+				Map<String, Object> map = new HashMap<>();
+				if(dataList.get(i).size() < keys.size()){
+					LOGGER.error("数据长度和title不匹配");
 					return null;
 				}
-				String value = dataList.get(i).get(j);
+				for (int j = 0; j < keys.size(); j++) {
+					String key = keys.get(j);
+					if(null == key){
+						LOGGER.error("title 为空了");
+						return null;
+					}
+					String value = dataList.get(i).get(j);
 //				if(StringUtil.isNotBlank(value) && StringUtil.isNotBlank(value.trim())){
 //					allNull = false;
 //				}
-				map.put(key.trim(), value.trim());
+					map.put(key.trim(), value.trim());
+				}
+				result.add(map);
 			}
-			result.add(map);
+			return result;
+		} catch (Exception e) {
+			LOGGER.error("error to get inputStream");
 		}
-		return result;
+		return null;
 	}
 	
 	// 获取Excel处理类
