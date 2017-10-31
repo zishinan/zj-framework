@@ -17,7 +17,6 @@ public class SpringBeanUtil implements BeanFactoryAware {
      */
     private static BeanFactory beanFactory;
 
-    @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         SpringBeanUtil.beanFactory = beanFactory;
     }
