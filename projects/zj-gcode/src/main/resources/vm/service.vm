@@ -1,8 +1,8 @@
-package ${data.packageName}.impl.mapper;
+package ${data.packageName}.impl.service;
 
 import ${data.packageName}.to.${data.toName};
 
-public interface ${data.toName}Mapper {
+public interface ${data.toName}Service {
     int save(${data.toName} ${data.lowerToName});
 
     ${data.toName} selectByPrimaryKey(${data.primaryField.fieldTypeString} ${data.primaryField.fieldName});

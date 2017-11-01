@@ -1,7 +1,7 @@
 #foreach($table in ${data})
 CREATE TABLE `$table.tableName` (
-#foreach($field in ${table.sqlFields})
-    `$field.fieldName` $field.sqlType.name ##
+#foreach($field in ${table.propFields})
+    `$field.sqlFieldName` $field.sqlType.name ##
 #if($field.sqlType.defLength)##
 ( ##
 #if($field.fieldLength > 0)##
@@ -11,16 +11,25 @@ $field.sqlType.defLength ##
 #end##
 ) ##
 #end##
-#if($field.allowNull)##
-NULL ##
-#else##
+#if($field.allowNull == false)##
 NOT NULL ##
+#end##
+#if($field.defaultValue)##
+DEFAULT $field.defaultValue ##
 #end##
 #if($field.autoIncrement)##
 AUTO_INCREMENT ##
 #end##
-COMMENT '$field.content' ,
+COMMENT '$field.content'##
+#if($!{velocityHasNext})
+,
+#else
+
 #end
-    PRIMARY KEY (`$table.primaryKey`)
+#end##
+#if($table.primaryKey)##
+  ,  PRIMARY KEY (`$table.primaryKey`)
+#end##
 );
+
 #end

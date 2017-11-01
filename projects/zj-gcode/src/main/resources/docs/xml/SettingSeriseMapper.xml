@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ouyang.test.impl.dao.SettingSeriseMapper">
+    <resultMap id="BaseResultMap" type="SettingSerise">
+        <id column="ID" property="id" />
+        <result column="CATEGORY_ID"  property="categoryId" />
+        <result column="NAME"  property="name" />
+        <result column="FAQ_SORT"  property="faqSort" />
+        <result column="NEED_LOGIN"  property="needLogin" />
+        <result column="TO_MEI_QIA"  property="toMeiQia" />
+        <result column="UPLOAD_IMG_STATUS"  property="uploadImgStatus" />
+        <result column="NEED_MID"  property="needMid" />
+        <result column="CREATE_ORDER"  property="createOrder" />
+        <result column="EXTR_IDS"  property="extrIds" />
+        <result column="MEI_QIA_GROUP"  property="meiQiaGroup" />
+        <result column="MEI_QIA_ID"  property="meiQiaId" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,CATEGORY_ID,NAME,FAQ_SORT,NEED_LOGIN,TO_MEI_QIA,UPLOAD_IMG_STATUS,NEED_MID,CREATE_ORDER,EXTR_IDS,MEI_QIA_GROUP,MEI_QIA_ID
+    </sql>
+
+    <insert id="save" parameterType="SettingSerise">
+        insert into SETTING_SERISE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+             <if test="id != null">
+                ID,
+             </if>
+             <if test="categoryId != null">
+                CATEGORY_ID,
+             </if>
+             <if test="name != null">
+                NAME,
+             </if>
+             <if test="faqSort != null">
+                FAQ_SORT,
+             </if>
+             <if test="needLogin != null">
+                NEED_LOGIN,
+             </if>
+             <if test="toMeiQia != null">
+                TO_MEI_QIA,
+             </if>
+             <if test="uploadImgStatus != null">
+                UPLOAD_IMG_STATUS,
+             </if>
+             <if test="needMid != null">
+                NEED_MID,
+             </if>
+             <if test="createOrder != null">
+                CREATE_ORDER,
+             </if>
+             <if test="extrIds != null">
+                EXTR_IDS,
+             </if>
+             <if test="meiQiaGroup != null">
+                MEI_QIA_GROUP,
+             </if>
+             <if test="meiQiaId != null">
+                MEI_QIA_ID,
+             </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+             <if test="id != null">
+                 #{id},
+             </if>
+             <if test="categoryId != null">
+                 #{categoryId},
+             </if>
+             <if test="name != null">
+                 #{name},
+             </if>
+             <if test="faqSort != null">
+                 #{faqSort},
+             </if>
+             <if test="needLogin != null">
+                 #{needLogin},
+             </if>
+             <if test="toMeiQia != null">
+                 #{toMeiQia},
+             </if>
+             <if test="uploadImgStatus != null">
+                 #{uploadImgStatus},
+             </if>
+             <if test="needMid != null">
+                 #{needMid},
+             </if>
+             <if test="createOrder != null">
+                 #{createOrder},
+             </if>
+             <if test="extrIds != null">
+                 #{extrIds},
+             </if>
+             <if test="meiQiaGroup != null">
+                 #{meiQiaGroup},
+             </if>
+             <if test="meiQiaId != null">
+                 #{meiQiaId},
+             </if>
+        </trim>
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM SETTING_SERISE WHERE ID = #{id}
+    </delete>
+
+    <update id="update" parameterType="IosChannel">
+        update SETTING_SERISE
+        <set>
+            <if test="id != null">
+                ID = #{id},
+            </if>
+            <if test="categoryId != null">
+                CATEGORY_ID = #{categoryId},
+            </if>
+            <if test="name != null">
+                NAME = #{name},
+            </if>
+            <if test="faqSort != null">
+                FAQ_SORT = #{faqSort},
+            </if>
+            <if test="needLogin != null">
+                NEED_LOGIN = #{needLogin},
+            </if>
+            <if test="toMeiQia != null">
+                TO_MEI_QIA = #{toMeiQia},
+            </if>
+            <if test="uploadImgStatus != null">
+                UPLOAD_IMG_STATUS = #{uploadImgStatus},
+            </if>
+            <if test="needMid != null">
+                NEED_MID = #{needMid},
+            </if>
+            <if test="createOrder != null">
+                CREATE_ORDER = #{createOrder},
+            </if>
+            <if test="extrIds != null">
+                EXTR_IDS = #{extrIds},
+            </if>
+            <if test="meiQiaGroup != null">
+                MEI_QIA_GROUP = #{meiQiaGroup},
+            </if>
+            <if test="meiQiaId != null">
+                MEI_QIA_ID = #{meiQiaId},
+            </if>
+        where ID = #{id}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from SETTING_SERISE
+        where ID = #{id}
+    </select>
+</mapper>

@@ -50,6 +50,10 @@ public class PropField {
      */
     private FieldType fieldType;
     /**
+     * java类型显示
+     */
+    private String fieldTypeString;
+    /**
      * javabean属性名
      */
     private String fieldName;
@@ -107,6 +111,14 @@ public class PropField {
 
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
+    }
+
+    public String getFieldTypeString() {
+        return fieldTypeString;
+    }
+
+    public void setFieldTypeString(String fieldTypeString) {
+        this.fieldTypeString = fieldTypeString;
     }
 
     public boolean isAutoIncrement() {

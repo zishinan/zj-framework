@@ -1,0 +1,30 @@
+package ${data.packageName}.impl.service.impl;
+
+import ${data.packageName}.to.${data.toName};
+import org.springframework.stereotype.Service;
+import ${data.packageName}.impl.dao.${data.toName}Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Service("${data.lowerToName}Service")
+public class ${data.toName}ServiceImpl implements ${data.toName}Service {
+    private static final Logger LOGGER = LoggerFactory.getLogger(${data.toName}ServiceImpl.class);
+    @Resource
+    private ${data.toName}Mapper ${data.lowerToName}Mapper;
+
+    int save(${data.toName} ${data.lowerToName}){
+        return ${data.lowerToName}Mapper.save(${data.lowerToName});
+    }
+
+    ${data.toName} selectByPrimaryKey(${data.primaryField.fieldTypeString} ${data.primaryField.fieldName}){
+        return ${data.lowerToName}Mapper.selectByPrimaryKey(${data.primaryField.fieldName});
+    }
+
+    int delete(${data.primaryField.fieldTypeString} ${data.primaryField.fieldName}){
+        return ${data.lowerToName}Mapper.delete(${data.primaryField.fieldName});
+    }
+
+    int update(${data.toName} ${data.lowerToName}){
+        return ${data.lowerToName}Mapper.update(${data.lowerToName});
+    }
+}

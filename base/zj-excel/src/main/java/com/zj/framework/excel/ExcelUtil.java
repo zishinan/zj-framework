@@ -66,6 +66,36 @@ public class ExcelUtil {
 		}
 		return null;
 	}
+
+	/**
+	 * 获取所有的表，限制表格数100000
+	 * @param filePath
+	 * @return
+	 */
+	public static Map<String,List<Map<String, Object>>> getAllExcel2Maps(String filePath){
+		Map<String,List<Map<String, Object>>> result = new HashMap<>();
+		try {
+			for (int i = 0; i < 100000; i++) {
+				File file = new File(filePath);
+				System.out.println(file.getAbsolutePath());
+				InputStream inputStream = new FileInputStream(file);
+				Sheet sheet = getSheet(filePath, inputStream, i);
+				if(null == sheet){
+					return result;
+				}
+				String tabelName = sheet.getSheetName();
+				if(tabelName == null){
+					return result;
+				}
+				List<Map<String, Object>> dataList  = getExcel2Maps(filePath,i);
+				result.put(tabelName,dataList);
+			}
+			return result;
+		} catch (Exception e) {
+			LOGGER.error("error to get inputStream");
+		}
+		return null;
+	}
 	
 	// 获取Excel处理类
 	private static Sheet getSheet(String filePath,InputStream inputStream,int sheetIndex) {
@@ -78,7 +108,7 @@ public class ExcelUtil {
 				return wb.getSheetAt(sheetIndex);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error("获取表错误：{}",filePath+"=="+sheetIndex);
 		}
 		return null;
 	}

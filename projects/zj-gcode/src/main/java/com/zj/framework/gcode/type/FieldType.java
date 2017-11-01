@@ -1,5 +1,7 @@
 package com.zj.framework.gcode.type;
 
+import com.zj.util.string.StringUtil;
+
 /**
  * @author Mr. xi.yang<br/>
  * @version V1.0 <br/>
@@ -19,5 +21,18 @@ public enum FieldType {
     BOOLEAN,
     LONG,
     STRING,
-    DATE
+    DATE,
+    ;
+
+    public static FieldType getFieldTypeByName(String name){
+        if(StringUtil.isWebBlank(name)){
+            return null;
+        }
+        for (FieldType temp : FieldType.values()) {
+            if(temp.toString().equals(name)){
+                return temp;
+            }
+        }
+        return null;
+    }
 }

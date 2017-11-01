@@ -18,9 +18,21 @@ public class PropTable {
      */
     private String primaryKey;
     /**
+     * 包名
+     */
+    private String packageName;
+    /**
+     * 创建时间
+     */
+    private String createTime;
+    /**
      * TO类名
      */
     private String toName;
+    /**
+     * 小写to
+     */
+    private String lowerToName;
     /**
      * 注释
      */
@@ -29,6 +41,10 @@ public class PropTable {
      * 字段集合
      */
     private List<PropField> propFields;
+    /**
+     * 主键
+     */
+    private PropField primaryField;
 
     public String getTableName() {
         return tableName;
@@ -58,7 +74,46 @@ public class PropTable {
         return toName;
     }
 
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public String getLowerToName() {
+        return lowerToName;
+    }
+    public void setLowerToName(String lowerToName) {
+        this.lowerToName = lowerToName;
+    }
+
+    public PropField getPrimaryField() {
+        return primaryField;
+    }
+
+    public void setPrimaryField(PropField primaryField) {
+        this.primaryField = primaryField;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     public void setToName(String toName) {
         this.toName = toName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

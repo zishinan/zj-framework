@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ouyang.test.impl.dao.SettingOrderSeriseExtrMapper">
+    <resultMap id="BaseResultMap" type="SettingOrderSeriseExtr">
+        <id column="ID" property="id" />
+        <result column="NAME"  property="name" />
+        <result column="FORCE"  property="force" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,NAME,FORCE
+    </sql>
+
+    <insert id="save" parameterType="SettingOrderSeriseExtr">
+        insert into SETTING_ORDER_SERISE_EXTR
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+             <if test="id != null">
+                ID,
+             </if>
+             <if test="name != null">
+                NAME,
+             </if>
+             <if test="force != null">
+                FORCE,
+             </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+             <if test="id != null">
+                 #{id},
+             </if>
+             <if test="name != null">
+                 #{name},
+             </if>
+             <if test="force != null">
+                 #{force},
+             </if>
+        </trim>
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM SETTING_ORDER_SERISE_EXTR WHERE ID = #{id}
+    </delete>
+
+    <update id="update" parameterType="IosChannel">
+        update SETTING_ORDER_SERISE_EXTR
+        <set>
+            <if test="id != null">
+                ID = #{id},
+            </if>
+            <if test="name != null">
+                NAME = #{name},
+            </if>
+            <if test="force != null">
+                FORCE = #{force},
+            </if>
+        where ID = #{id}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from SETTING_ORDER_SERISE_EXTR
+        where ID = #{id}
+    </select>
+</mapper>

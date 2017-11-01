@@ -1,23 +1,27 @@
 package ${data.packageName}.to;
 
-import com.zj.framework.baseto.to.BaseTO;
+import ${data.packageName}.baseto.BaseTO;
 
 /**
 * @author Mr. xi.yang<br/>
 * @version V1.0 <br/>
-* @description: ${data.description} <br/>
-* @date ${data.dateTime} <br/>
+* @description: ${data.content} <br/>
+* @date ${data.createTime} <br/>
 */
-public class ${data.tableName} extends BaseTO {
-#foreach($field in ${data.fields})
-    private ${field.fieldType} ${field.fieldName};
+public class ${data.toName} extends BaseTO {
+#foreach($field in ${data.propFields})
+    /**
+    * ${field.content}
+    */
+    private ${field.fieldTypeString} ${field.fieldName};
 #end
-#foreach($field in ${data.fields})
 
-    public ${field.fieldType} get${field.fiedNameUp}(){
+#foreach($field in ${data.propFields})
+    public ${field.fieldTypeString} ${field.getMethodTarget}${field.firstUpFieldName}(){
         return ${field.fieldName};
     }
-    public void set${field.fiedNameUp}(${field.fieldType} ${field.fieldName}) {
+    public void set${field.firstUpFieldName}(${field.fieldTypeString} ${field.fieldName}) {
         this.${field.fieldName} = ${field.fieldName};
     }
 #end
+}

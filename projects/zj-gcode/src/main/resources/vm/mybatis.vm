@@ -1,110 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${bean.packageName}.impl.dao.${bean.tabelName}Mapper">
-    <resultMap id="BaseResultMap" type="${bean.tabelName}">
-#foreach($field in${table.fields})
-#if($field.prikey)
-    <id column="${field.fieldName}" property="${field.propertyName}" />
+<mapper namespace="${data.packageName}.impl.dao.${data.toName}Mapper">
+    <resultMap id="BaseResultMap" type="${data.toName}">
+#foreach($field in${data.propFields})
+#if($field.primary)
+        <id column="${field.sqlFieldName}" property="${field.fieldName}" />
 #else
-    <result column="${field.fieldName}"  property="${field.propertyName}" />
+        <result column="${field.sqlFieldName}"  property="${field.fieldName}" />
 #end
 #end
     </resultMap>
 
     <sql id="Base_Column_List">
-#foreach($field in${table.fields})
-        ${field.fieldName},
+        ##
+#foreach($field in${data.propFields})##
+${field.sqlFieldName}##
+#if($!{velocityHasNext})##
+,##
+#end##
 #end
+
     </sql>
 
-    <insert id="save" parameterType="IosChannel">
-        insert into IOS_CHANNEL
+    <insert id="save" parameterType="${data.toName}">
+        insert into ${data.tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="channelId != null">
-                CHANNEL_ID,
-            </if>
-            <if test="manualPkgUrl != null">
-                MANUAL_PKG_URL,
-            </if>
-            <if test="channelPkgUrl != null">
-                CHANNEL_PKG_URL,
-            </if>
-            <if test="sort != null">
-                SORT,
-            </if>
-            <if test="operator != null">
-                OPERATOR,
-            </if>
-            <if test="createdDate != null">
-                CREATED_DATE,
-            </if>
-            <if test="publishDate != null">
-                PUBLISH_DATE,
-            </if>
-            <if test="iosCatagoryId != null">
-                IOS_CATAGORY_ID,
-            </if>
+#foreach($field in${data.propFields})##
+             <if test="${field.fieldName} != null">
+                ${field.sqlFieldName},
+             </if>
+#end##
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="channelId != null">
-                #{channelId},
-            </if>
-            <if test="manualPkgUrl != null">
-                #{manualPkgUrl},
-            </if>
-            <if test="channelPkgUrl != null">
-                #{channelPkgUrl},
-            </if>
-            <if test="sort != null">
-                #{sort},
-            </if>
-            <if test="operator != null">
-                #{operator},
-            </if>
-            <if test="createdDate != null">
-                #{createdDate},
-            </if>
-            <if test="publishDate != null">
-                #{publishDate},
-            </if>
-            <if test="iosCatagoryId != null">
-                #{iosCatagoryId},
-            </if>
+#foreach($field in${data.propFields})##
+             <if test="${field.fieldName} != null">
+                 #{${field.fieldName}},
+             </if>
+#end##
         </trim>
     </insert>
 
     <delete id="delete">
-        DELETE FROM ${data.tableName} WHERE CHANNEL_ID = #{channelId}
+        DELETE FROM ${data.tableName} WHERE ${data.primaryField.sqlFieldName} = #{${data.primaryField.fieldName}}
     </delete>
 
     <update id="update" parameterType="IosChannel">
-        update IOS_CHANNEL
+        update ${data.tableName}
         <set>
-            <if test="manualPkgUrl != null">
-                MANUAL_PKG_URL = #{manualPkgUrl},
+#foreach($field in${data.propFields})##
+            <if test="${field.fieldName} != null">
+                ${field.sqlFieldName} = #{${field.fieldName}},
             </if>
-            <if test="channelPkgUrl != null">
-                CHANNEL_PKG_URL = #{channelPkgUrl},
-            </if>
-            <if test="sort != null">
-                SORT = #{sort},
-            </if>
-            <if test="operator != null">
-                OPERATOR = #{operator},
-            </if>
-            <if test="publishDate != null">
-                PUBLISH_DATE = #{publishDate},
-            </if>
-            <if test="iosCatagoryId != null">
-                IOS_CATAGORY_ID = #{iosCatagoryId},
-            </if>
-        </set>
-        where CHANNEL_ID = #{channelId}
+#end##
+        where ${data.primaryField.sqlFieldName} = #{${data.primaryField.fieldName}}
     </update>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         select <include refid="Base_Column_List"/>
-        from IOS_CHANNEL iosChannel , CHANNEL channel
-        where iosChannel.CHANNEL_ID = #{channelId} AND iosChannel.CHANNEL_ID = channel.ID
+        from ${data.tableName}
+        where ${data.primaryField.sqlFieldName} = #{${data.primaryField.fieldName}}
     </select>
 </mapper>
