@@ -37,7 +37,7 @@ public class Client {
     /**
      * 代码定义包名
      */
-    private static final String PROJECT_PACKAGE_NAME = "com.ouyang.test";
+    private static final String PROJECT_PACKAGE_NAME = "com.downjoy.customercenter.service";
     /**
      * 生成文项目路径
      */
@@ -66,7 +66,7 @@ public class Client {
             VmUtil.vmToFile(VM_PATH,"dao.vm",tempMap,PROJECT_PATH+"mapper\\"+propTable.getToName()+"Mapper.java");
             VmUtil.vmToFile(VM_PATH,"mybatis.vm",tempMap,PROJECT_PATH+"xml\\"+propTable.getToName()+"Mapper.xml");
             VmUtil.vmToFile(VM_PATH,"service.vm",tempMap,PROJECT_PATH+"service\\"+propTable.getToName()+"Service.java");
-            VmUtil.vmToFile(VM_PATH,"service.vm",tempMap,PROJECT_PATH+"serviceimpl\\"+propTable.getToName()+"ServiceImpl.java");
+            VmUtil.vmToFile(VM_PATH,"serviceimpl.vm",tempMap,PROJECT_PATH+"serviceimpl\\"+propTable.getToName()+"ServiceImpl.java");
         }
 
 //        生成mybatis文件
