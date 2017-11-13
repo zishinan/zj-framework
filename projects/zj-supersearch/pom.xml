@@ -32,8 +32,8 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.zj.framework.cilizhu</groupId>
-            <artifactId>zj-cilizhu</artifactId>
+            <groupId>com.zj.framework.httpclient</groupId>
+            <artifactId>zj-httpclient</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
@@ -41,6 +41,7 @@
             <artifactId>zj-web</artifactId>
             <version>1.0.0</version>
         </dependency>
+
 
     </dependencies>
     <build>
