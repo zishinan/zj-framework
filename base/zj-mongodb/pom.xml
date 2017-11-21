@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.zj.framework</groupId>
+        <artifactId>zj-framework</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    
     <groupId>com.zj.framework.mongodb</groupId>
     <artifactId>zj-mongodb</artifactId>
     <version>1.0.0</version>
@@ -11,12 +17,13 @@
     <packaging>jar</packaging>
 
     <properties>
+        <spring.data.mongo.version>1.7.0.RELEASE</spring.data.mongo.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
-            <version>1.7.0.RELEASE</version>
+            <version>${spring.data.mongo.version}</version>
         </dependency>
     </dependencies>
 

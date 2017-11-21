@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <configuration>
-
-    <property name="LOG_DIR" value="/home/zjframework/logs"/>
+    <property resource="properties/logback.properties" />
+    <property name="LOG_DIR" value="/home/zjframework/logs/${logback.module}"/>
 
     <!-- 控制台日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -22,14 +22,8 @@
         </encoder>
     </appender>
 
-    <!--<logger name="com.impl.dao" level="DEBUG"/>-->
-    <!--<logger name="java.sql" level="ERROR"/>-->
-    <!--<logger name="org.springframework" level="ERROR"/>-->
-
-
-    <root level="INFO">
-        <appender-ref ref="CONSOLE" />
-        <!--<appender-ref ref="FILE" />-->
+    <root level="${logback.level}">
+        <appender-ref ref="${logback.appender}" />
     </root>
 
 </configuration>
