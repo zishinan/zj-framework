@@ -163,21 +163,26 @@ public class HttpUtil {
 		}
 	}
 	
-	public static String get(String url) throws ParseException, IOException{
-		HttpClient client = HttpClientBuilder.create().build();
-		
-		HttpGet get = new HttpGet(url);
-		
-		HttpResponse res = client.execute(get);
-		if(res.getStatusLine().getStatusCode() == STATE_OK){
-			HttpEntity entity = res.getEntity();
-			if (entity != null) {
-				String charset = getContentCharSet(entity);
-				// 使用EntityUtils的toString方法，传递编码，默认编码是ISO-8859-1
-				return EntityUtils.toString(entity, charset);
+	public static String get(String url){
+		try {
+			HttpClient client = HttpClientBuilder.create().build();
+
+			HttpGet get = new HttpGet(url);
+
+			HttpResponse res = client.execute(get);
+			if(res.getStatusLine().getStatusCode() == STATE_OK){
+				HttpEntity entity = res.getEntity();
+				if (entity != null) {
+					String charset = getContentCharSet(entity);
+					// 使用EntityUtils的toString方法，传递编码，默认编码是ISO-8859-1
+					return EntityUtils.toString(entity, charset);
+				}
+			}else {
+				logger.warn("http get result code = "+ res.getStatusLine().getStatusCode());
+				return null;
 			}
-		}else {
-			return null;
+		}catch (Exception e){
+			e.printStackTrace();
 		}
 		return null;
 	}
