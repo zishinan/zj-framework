@@ -21,4 +21,28 @@ public class NumberUtil {
     public static boolean isOdd(int i){
         return (i & 1) != 0;
     }
+
+    public static int getInt(String in){
+        if(StringUtil.isWebBlank(in)){
+            return 0;
+        }
+        try {
+            return Integer.parseInt(in);
+        }catch (Exception e){
+            logger.error("转换成int错误："+in);
+        }
+        return 0;
+    }
+
+    public static long getLong(String in){
+        if(StringUtil.isWebBlank(in)){
+            return 0L;
+        }
+        try {
+            return Long.parseLong(in);
+        }catch (Exception e){
+            logger.error("转换成long错误："+in);
+        }
+        return 0L;
+    }
 }
