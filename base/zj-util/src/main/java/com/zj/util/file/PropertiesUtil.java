@@ -1,24 +1,31 @@
 package com.zj.util.file;
 
-import com.zj.util.date.DateUtil;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class PropertiesUtil extends TimerTask{
+public class PropertiesUtil{
 	private static final Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 	private static Properties properties = new Properties();
 
-	private Timer systemConfigTimer = new Timer("SystemConfigTimer");
-	
+	static ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
+			new BasicThreadFactory.Builder().namingPattern("systemPropertiesReloadSchedule").daemon(true).build());
+
 	public PropertiesUtil() {
 		loadAll();
 		// 每10分钟重载一次配置文件及缓存
-		systemConfigTimer.schedule(this, DateUtil.DAY_LONG, DateUtil.DAY_LONG);
+		executorService.scheduleAtFixedRate(new Runnable() {
+			@Override
+			public void run() {
+				loadAll();
+			}
+		},0,1, TimeUnit.DAYS);
 	}
 	
 	public static void loadAll(){
@@ -62,10 +69,5 @@ public class PropertiesUtil extends TimerTask{
 	
 	public static String getProperty(String key,String defaultvalue) {
 		return properties.getProperty(key,defaultvalue);
-	}
-
-	@Override
-	public void run() {
-		loadAll();
 	}
 }

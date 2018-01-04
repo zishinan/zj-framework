@@ -37,7 +37,7 @@ public class Client {
     /**
      * 代码定义包名
      */
-    private static final String PROJECT_PACKAGE_NAME = "com.downjoy.customercenter.service";
+    private static final String PROJECT_PACKAGE_NAME = "com.downjoy.vipservice";
     /**
      * 生成文项目路径
      */
@@ -45,7 +45,7 @@ public class Client {
     /**
      *
      */
-    private static final String EXCEL_PATH = "F:\\当乐\\迭代记录\\2017_10_20_客服系统V3_0\\data.xlsx";
+    private static final String EXCEL_PATH = "F:\\当乐\\迭代记录\\2017_12_12_vip_2_4\\data.xlsx";
 
 
     public static void main(String[] args) {

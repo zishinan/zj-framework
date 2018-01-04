@@ -39,6 +39,16 @@
             <artifactId>zj-fastjson</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.zj.util</groupId>
+            <artifactId>zj-util</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zj.framework.logback</groupId>
+            <artifactId>zj-logback</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

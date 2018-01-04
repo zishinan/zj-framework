@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <configuration>
-    <property resource="properties/logback.properties" />
-    <property name="LOG_DIR" value="/home/zjframework/logs/${logback.module}"/>
+    <property resource="properties/module.properties" />
+    <property name="LOG_DIR" value="/home/zjframework/logs/${module.name}"/>
 
     <!-- 控制台日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">

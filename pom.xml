@@ -147,26 +147,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Local Nexus Repository</name>
-            <url>http://nexus.d.cn/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Local Nexus Repository</name>
-            <url>http://nexus.d.cn/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>nexus-public</id>
-            <name>Public Repositories</name>
-            <url>http://nexus.d.cn/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
 </project>

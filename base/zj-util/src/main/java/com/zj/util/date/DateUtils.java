@@ -26,6 +26,14 @@ public class DateUtils {
     public static final Long WEEK_LONG   = 604800000L;
     public static final Long MONTH_LONG  = 2592000000L;
     public static final Long YEAR_LONG   = 31536000000L;
+
+    private static final Pattern yyyyMMdd = Pattern.compile("\\d{8}");
+    private static final Pattern yyyyMMddHHss = Pattern.compile("\\d{12}");
+    private static final Pattern yyyy_MM_HH = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}");
+    private static final Pattern yyyy_MM_dd = Pattern.compile("\\d{4}/\\d{1,2}/\\d{1,2}");
+    private static final Pattern yyMMdd = Pattern.compile("\\d{6}");
+    private static final Pattern yyyy_MM_dd_HH_mm_ss = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}");
+
     /**
      * 将String类型的格式化字符串转为long类型<br/>
      * 支持的String格式：<br/>
@@ -38,12 +46,6 @@ public class DateUtils {
      * @return
      */
     public static long covertString2Long(String date) {
-        Pattern yyyyMMdd = Pattern.compile("\\d{8}");
-        Pattern yyyyMMddHHss = Pattern.compile("\\d{12}");
-        Pattern yyyy_MM_HH = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}");
-        Pattern yyMMdd = Pattern.compile("\\d{6}");
-        Pattern yyyy_MM_dd_HH_mm_ss = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}");
-
         SimpleDateFormat sdf = null;
         if (StringUtils.isBlank(date)) {
             return -1;
@@ -53,6 +55,9 @@ public class DateUtils {
         }
         else if (yyyy_MM_HH.matcher(date).matches()) {
             sdf = new SimpleDateFormat("yyyy-MM-dd");
+        }
+        else if (yyyy_MM_dd.matcher(date).matches()) {
+            sdf = new SimpleDateFormat("yyyy/MM/dd");
         }
         else if (yyMMdd.matcher(date).matches()) {
             sdf = new SimpleDateFormat("yyMMdd");

@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.zj.util</groupId>
+            <artifactId>zj-util</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.zj.framework.task</groupId>
             <artifactId>zj-task</artifactId>
             <version>1.0.0</version>
@@ -24,6 +29,11 @@
         <dependency>
             <groupId>com.zj.framework.druid</groupId>
             <artifactId>zj-druid</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zj.framework.logback</groupId>
+            <artifactId>zj-logback</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>

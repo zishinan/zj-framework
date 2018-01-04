@@ -13,19 +13,19 @@ public class ${data.toName}ServiceImpl implements ${data.toName}Service {
     private static final Logger LOGGER = LoggerFactory.getLogger(${data.toName}ServiceImpl.class);
     @Resource
     private ${data.toName}Mapper ${data.lowerToName}Mapper;
-
+    @Override
     public int save(${data.toName} ${data.lowerToName}){
         return ${data.lowerToName}Mapper.save(${data.lowerToName});
     }
-
+    @Override
     public ${data.toName} selectByPrimaryKey(${data.primaryField.fieldTypeString} ${data.primaryField.fieldName}){
         return ${data.lowerToName}Mapper.selectByPrimaryKey(${data.primaryField.fieldName});
     }
-
+    @Override
     public int delete(${data.primaryField.fieldTypeString} ${data.primaryField.fieldName}){
         return ${data.lowerToName}Mapper.delete(${data.primaryField.fieldName});
     }
-
+    @Override
     public int update(${data.toName} ${data.lowerToName}){
         return ${data.lowerToName}Mapper.update(${data.lowerToName});
     }
