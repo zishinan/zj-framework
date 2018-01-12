@@ -19,6 +19,13 @@ import java.util.regex.Pattern;
  */
 public class DateUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(DateUtils.class);
+
+    /**
+     * 转换时间错误时默认返回值
+     */
+    private static final long DEFAULT_ERROR_DATE_TIME = -1;
+    private static final String[] WEEK_DAY_STRS = {"日","一","二","三","四","五","六"};
+
     public static final Long SECOND_LONG = 1000L;
     public static final Long MINUTE_LONG = 60000L;
     public static final Long HOUR_LONG   = 3600000L;
@@ -35,6 +42,19 @@ public class DateUtils {
     private static final Pattern yyyy_MM_dd_HH_mm_ss = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}");
 
     /**
+     * 获取中文星期几
+     * @param time
+     * @param prefix 前缀 “星期”、“周”
+     * @return
+     */
+    public static String getDayOfWeekCh(long time,String prefix){
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(time);
+        int dayOfweek = c.get(Calendar.DAY_OF_WEEK);
+        return prefix + WEEK_DAY_STRS[dayOfweek-1];
+    }
+
+    /**
      * 将String类型的格式化字符串转为long类型<br/>
      * 支持的String格式：<br/>
      * yyyyMMdd<br/>
@@ -46,35 +66,45 @@ public class DateUtils {
      * @return
      */
     public static long covertString2Long(String date) {
-        SimpleDateFormat sdf = null;
+        return covertString2Long(date,DEFAULT_ERROR_DATE_TIME);
+    }
+
+    /**
+     * 将String类型的格式化字符串转为long类型
+     * @param date
+     * @param defaultTime 转换错误默认返回值
+     * @return
+     */
+    public static long covertString2Long(String date,long defaultTime) {
         if (StringUtils.isBlank(date)) {
-            return -1;
+            return defaultTime;
         }
-        if (yyyyMMdd.matcher(date).matches()) {
-            sdf = new SimpleDateFormat("yyyyMMdd");
-        }
-        else if (yyyy_MM_HH.matcher(date).matches()) {
-            sdf = new SimpleDateFormat("yyyy-MM-dd");
-        }
-        else if (yyyy_MM_dd.matcher(date).matches()) {
-            sdf = new SimpleDateFormat("yyyy/MM/dd");
-        }
-        else if (yyMMdd.matcher(date).matches()) {
-            sdf = new SimpleDateFormat("yyMMdd");
-        }
-        else if (yyyy_MM_dd_HH_mm_ss.matcher(date).matches()) {
-            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        }
-        else if (yyyyMMddHHss.matcher(date).matches()) {
-            sdf = new SimpleDateFormat("yyyyMMddHHmm");
-        }
+        SimpleDateFormat sdf = null;
 
         try {
+            if (yyyyMMdd.matcher(date).matches()) {
+                sdf = new SimpleDateFormat("yyyyMMdd");
+            }
+            else if (yyyy_MM_HH.matcher(date).matches()) {
+                sdf = new SimpleDateFormat("yyyy-MM-dd");
+            }
+            else if (yyyy_MM_dd.matcher(date).matches()) {
+                sdf = new SimpleDateFormat("yyyy/MM/dd");
+            }
+            else if (yyMMdd.matcher(date).matches()) {
+                sdf = new SimpleDateFormat("yyMMdd");
+            }
+            else if (yyyy_MM_dd_HH_mm_ss.matcher(date).matches()) {
+                sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            }
+            else if (yyyyMMddHHss.matcher(date).matches()) {
+                sdf = new SimpleDateFormat("yyyyMMddHHmm");
+            }
             return sdf.parse(date).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return 0;
+        return defaultTime;
     }
 
     /**
@@ -90,6 +120,12 @@ public class DateUtils {
         return calendar.getTime();
     }
 
+    /**
+     * 对比时间差
+     * @param start
+     * @param end
+     * @return
+     */
     public static int diffDays(Date start,Date end) {
         try {
             SimpleDateFormat sdf=new SimpleDateFormat(DatePattern.yyyyMMdd.getName());
@@ -133,6 +169,12 @@ public class DateUtils {
         return cal.getTime();
     }
 
+    /**
+     * 格式化时间
+     * @param date
+     * @param pattern
+     * @return
+     */
     public static String formatDate(Date date,DatePattern pattern){
         try {
             return new SimpleDateFormat(pattern.getName()).format(date);
@@ -140,6 +182,62 @@ public class DateUtils {
             LOGGER.error("format date error:"+e.getMessage());
             return null;
         }
+    }
 
+    /**
+     * 获取定时器时间表达式
+     * @param i
+     * @return
+     */
+    public static String getConExpression(long i){
+        int y = getYear(i);
+        int mo = getMonth(i);
+        int d = getDay(i);
+        int h = getHour(i);
+        int mm = getMinute(i);
+        int s = getSecond(i);
+        return s+" "+mm+" "+h+" "+d+" "+mo+" "+"?"+" "+y;
+    }
+
+    public static int getYear(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.YEAR);
+    }
+
+    public static int getMonth(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.MONTH) + 1;
+    }
+
+    public static int getWeek(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.WEEK_OF_YEAR);
+    }
+
+    public static int getDay(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.DATE);
+    }
+
+    public static int getHour(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.HOUR);
+    }
+
+    public static int getMinute(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.MINUTE);
+    }
+
+    public static int getSecond(long i) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(i);
+        return c.get(Calendar.SECOND);
     }
 }
