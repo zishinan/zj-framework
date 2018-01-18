@@ -16,11 +16,12 @@ public enum DatePattern{
     yyyyMMdd_ch("yyyy年MM月dd日"),
     HHmmss("HH:mm:ss")
     ;
-    private String name;
-    DatePattern(String name){
-        this.name = name;
+    private String pattern;
+    DatePattern(String pattern){
+        this.pattern = pattern;
     }
-    public String getName() {
-        return name;
+
+    public String getPattern() {
+        return pattern;
     }
 }

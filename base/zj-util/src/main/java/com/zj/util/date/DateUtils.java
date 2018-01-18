@@ -128,7 +128,7 @@ public class DateUtils {
      */
     public static int diffDays(Date start,Date end) {
         try {
-            SimpleDateFormat sdf=new SimpleDateFormat(DatePattern.yyyyMMdd.getName());
+            SimpleDateFormat sdf=new SimpleDateFormat(DatePattern.yyyyMMdd.getPattern());
             long startTime = sdf.parse(sdf.format(start)).getTime();
             long endTime = sdf.parse(sdf.format(end)).getTime();
             long diffDays=(endTime-startTime)/(DAY_LONG);
@@ -177,7 +177,7 @@ public class DateUtils {
      */
     public static String formatDate(Date date,DatePattern pattern){
         try {
-            return new SimpleDateFormat(pattern.getName()).format(date);
+            return new SimpleDateFormat(pattern.getPattern()).format(date);
         }catch (Exception e){
             LOGGER.error("format date error:"+e.getMessage());
             return null;

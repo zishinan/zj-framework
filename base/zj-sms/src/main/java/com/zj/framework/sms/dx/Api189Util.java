@@ -2,8 +2,9 @@ package com.zj.framework.sms.dx;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.zj.framework.baseto.type.DatePattern;
 import com.zj.framework.httpclient.HttpUtil;
-import com.zj.util.date.DateUtil;
+import com.zj.util.date.DateUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -58,7 +59,7 @@ public class Api189Util {
 		paramMap.put("order", "164763268"+ranInt);
 		paramMap.put("url", "http://www.baidu.com");
 		nvps.add(new BasicNameValuePair("template_param", JSON.toJSONString(paramMap)));
-		String now = DateUtil.fmtLong2String(System.currentTimeMillis(), DateUtil.yyyy_MM_dd_HH_mm_ss);
+		String now = DateUtils.formatDate(new Date(), DatePattern.yyyyMMdd_HHmmss);
 		nvps.add(new BasicNameValuePair("timestamp", now));
 		
 		

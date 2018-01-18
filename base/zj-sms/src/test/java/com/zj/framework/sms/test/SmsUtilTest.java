@@ -15,5 +15,6 @@ public class SmsUtilTest {
 
     @Test
     public void testToJsonString() throws Exception {
+        logger.info("============");
     }
 }

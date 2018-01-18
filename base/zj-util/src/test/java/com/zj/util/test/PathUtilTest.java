@@ -1,6 +1,7 @@
 package com.zj.util.test;
 
 import com.zj.util.file.PathUtil;
+import com.zj.util.game.ExtractGameData;
 import org.junit.Test;
 
 /**
@@ -15,4 +16,9 @@ public class PathUtilTest {
         System.out.println(PathUtil.getClassPath());
     }
 
+    @Test
+    public void testExtraGameData() throws Exception {
+        String ex = ExtractGameData.uncompress("465465464654646");
+        System.out.println(ex);
+    }
 }

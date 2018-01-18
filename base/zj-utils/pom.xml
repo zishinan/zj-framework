@@ -4,37 +4,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zj.framework.sms</groupId>
-    <artifactId>zj-sms</artifactId>
+    <groupId>com.zj.framework.utils</groupId>
+    <artifactId>zj-utils</artifactId>
     <version>1.0.0</version>
-    <name>zj-sms</name>
+    <name>zj-utils</name>
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.zj.util</groupId>
-            <artifactId>zj-util</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zj.framework.httpclient</groupId>
-            <artifactId>zj-httpclient</artifactId>
-            <version>1.0.0</version>
-        </dependency>
         <dependency>
             <groupId>com.zj.framework.logback</groupId>
             <artifactId>zj-logback</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
+            <groupId>com.zj.framework.baseto</groupId>
+            <artifactId>zj-baseto</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.zj.framework.springtest</groupId>
             <artifactId>zj-springtest</artifactId>
             <version>1.0.0</version>
         </dependency>
+
         <dependency>
-            <groupId>com.zj.framework.fastjson</groupId>
-            <artifactId>zj-fastjson</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
         </dependency>
     </dependencies>
 
