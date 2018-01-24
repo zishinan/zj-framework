@@ -27,9 +27,9 @@
         <module>base/zj-springtest</module>
         <module>base/zj-task</module>
         <module>base/zj-tkmapper</module>
-        <module>base/zj-util</module>
         <module>base/zj-velocity</module>
         <module>base/zj-mongodb</module>
+        <module>base/zj-utils</module>
 
         <!--framework-->
         <module>framework/zj-service</module>
