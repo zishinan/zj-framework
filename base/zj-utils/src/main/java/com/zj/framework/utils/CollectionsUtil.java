@@ -1,4 +1,4 @@
-package com.zj.util.collection;
+package com.zj.framework.utils;
 
 
 import com.zj.framework.baseto.to.SortKey;

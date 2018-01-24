@@ -1,7 +1,7 @@
 /**
  * $Id$
  */
-package com.zj.util.sha;
+package com.zj.framework.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

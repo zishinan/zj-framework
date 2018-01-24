@@ -13,6 +13,7 @@ public enum DatePattern{
     MMdd_HHmm("MM-dd HH:mm"),
     yyyyMMdd("yyyy-MM-dd"),
     yyyyMMdd_mini("yyyyMMdd"),
+    yyMMdd_mini("yyMMdd"),
     yyyyMMdd_ch("yyyy年MM月dd日"),
     HHmmss("HH:mm:ss")
     ;

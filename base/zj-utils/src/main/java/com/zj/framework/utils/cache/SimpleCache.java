@@ -1,4 +1,4 @@
-package com.zj.util.cache;
+package com.zj.framework.utils.cache;
 
 import java.util.Map;
 import java.util.WeakHashMap;

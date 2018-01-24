@@ -1,6 +1,7 @@
 package com.zj.framework.utils.test;
 
 import com.zj.framework.baseto.type.DatePattern;
+import com.zj.framework.utils.ZjDateUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
@@ -25,5 +26,20 @@ public class DateUtilTest {
 
         String strs = DateFormatUtils.format(date, DatePattern.yyyyMMdd_mini.getPattern());
         System.out.println(strs);
+    }
+
+    @Test
+    public void testParseDate() throws Exception {
+        Date date = ZjDateUtils.parseDate("180615");
+        System.out.println("==="+date);
+        System.out.println(ZjDateUtils.parseDate2Long("180615"));
+    }
+
+    @Test
+    public void testMinAndMax() throws Exception {
+        Date date = new Date();
+        System.out.println("now = "+ date);
+        System.out.println("begin = "+ ZjDateUtils.getStartTimeOfDate(date));
+        System.out.println("end = "+ ZjDateUtils.getEndTimeOfDate(date));
     }
 }

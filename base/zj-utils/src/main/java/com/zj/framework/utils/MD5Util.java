@@ -1,4 +1,4 @@
-package com.zj.util.string;
+package com.zj.framework.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

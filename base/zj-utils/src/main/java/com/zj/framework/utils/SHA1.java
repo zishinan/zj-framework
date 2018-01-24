@@ -1,4 +1,4 @@
-package com.zj.util.sha;
+package com.zj.framework.utils;
   
 public class SHA1 {  
     private final int[] abcde = { 0x67452301, 0xefcdab89, 0x98badcfe,  

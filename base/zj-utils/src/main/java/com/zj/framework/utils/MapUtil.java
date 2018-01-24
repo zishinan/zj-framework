@@ -1,10 +1,12 @@
-package com.zj.util.collection;
+package com.zj.framework.utils;
 
-import com.zj.util.file.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MapUtil {
 	private static final Logger logger = LoggerFactory.getLogger(MapUtil.class);
@@ -15,25 +17,6 @@ public class MapUtil {
 		List<Map<String, String>> result = new ArrayList<Map<String,String>>();
 		Map<String,String> map = new HashMap<String, String>();
 	}
-	public static void listMap2Log(List<Map<String, String>> result,String fileName) {
-		if(result.size() == 0){
-			return;
-		}
-		StringBuilder sb = new StringBuilder();
-		Set<String> keys = result.get(0).keySet();
-		for (String key : keys) {
-			sb.append(key + "\t");
-		}
-		sb.append("\n");
-		for (Map<String, String> map : result) {
-			for (String key : keys) {
-				sb.append(MapUtil.getMapString(map, key) + "\t");
-			}
-			sb.append("\n");
-		}
-		LogUtil.logToFile(fileName, sb.toString());
-	}
-	
 	public static void mapIntIncrement(Map<String, String> map,String key,String increm){
 		int add = 0;
 		try {

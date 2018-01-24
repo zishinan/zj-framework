@@ -20,7 +20,7 @@ import java.util.Map;
 public class ZxingCode {
 	public static final String SEPARATOR = String.valueOf((char) 29);
 
-	private static String readQRCode(String path, String fileName) {
+	public static String readQRCode(String path, String fileName) {
 		try {
 			MultiFormatReader reader = new MultiFormatReader();
 			File file = new File(path,fileName+".jpg");
@@ -40,7 +40,7 @@ public class ZxingCode {
 		return null;
 	}
 
-	private static void saveQRCode(String contents, String path, String fileName) {
+	public static void saveQRCode(String contents, String path, String fileName) {
 		try {
 			MultiFormatWriter writer = new MultiFormatWriter();
 			Map<EncodeHintType, String> hints = new HashMap<EncodeHintType, String>();
