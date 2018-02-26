@@ -30,6 +30,7 @@
         <module>base/zj-velocity</module>
         <module>base/zj-mongodb</module>
         <module>base/zj-utils</module>
+        <module>base/zj-activiti</module>
 
         <!--framework-->
         <module>framework/zj-service</module>

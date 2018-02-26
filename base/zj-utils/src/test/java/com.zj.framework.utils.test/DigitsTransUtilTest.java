@@ -12,7 +12,7 @@ import org.junit.Test;
 public class DigitsTransUtilTest {
     @Test
     public void test64() throws Exception {
-        long curtime = 301812309999999L;
+        long curtime = 17628091716L;
         System.out.println(curtime);
         String hex = DigitsTransUtil.decimal2Hexadecimal(curtime);
         System.out.println(hex);

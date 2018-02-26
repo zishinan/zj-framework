@@ -16,6 +16,6 @@ public class JsonUtil {
      * @return
      */
     public static String toJsonString(Object object){
-        return JSON.toJSONStringWithDateFormat(object, DatePattern.yyyyMMdd_HHmmss.getName());
+        return JSON.toJSONStringWithDateFormat(object, DatePattern.yyyyMMdd_HHmmss.getPattern());
     }
 }
